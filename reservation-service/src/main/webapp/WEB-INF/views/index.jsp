@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>카테고리</title>
 </head>
 <body>
@@ -17,9 +18,16 @@
 	
 	<hr/>
 	<h3>카테고리목록</h3>
+	<ul>
 	<c:forEach items="${list }" var="i">
-		${i.name }
+		<li>
+			<input type="hidden" name="id" value="${i.id }"/>
+			<input type="text" name="name" value="${i.name }" />
+			<input class="removebtn" type="button" value="삭제" />
+		</li>
 	</c:forEach>
-	
+	</ul>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="resources/js/app.js"></script>
 </html>
