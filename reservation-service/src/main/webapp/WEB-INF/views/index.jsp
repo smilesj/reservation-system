@@ -24,10 +24,11 @@
 			<input type="hidden" name="id" value="${i.id }"/>
 			<input type="text" name="name" value="${i.name }" />
 			<input class="removebtn" type="button" value="삭제" />
+			<input class="updatebtn" type="button" value="수정2" />
 		</li>
 	</c:forEach>
 	</ul>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="resources/js/app.js"></script>
+<script src="resources/js/app.js?ver=2"></script>
 </html>
