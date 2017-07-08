@@ -43,6 +43,12 @@ public class CategoryDao {
 		return jdbc.query(CategorySqls.SELECT, params, rowMapper);
 	}
 	
+	public Category selectById(int id) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("id", id);
+		return jdbc.queryForObject(CategorySqls.SELECT_BY_ID, params, rowMapper);
+	}
+	
 	public int update(Category category) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(category);
 		return jdbc.update(CategorySqls.UPDATE_BY_ID, params);

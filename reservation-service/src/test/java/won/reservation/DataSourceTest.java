@@ -1,4 +1,4 @@
-package won.reservation.test;
+package won.reservation;
 
 import java.sql.Connection;
 

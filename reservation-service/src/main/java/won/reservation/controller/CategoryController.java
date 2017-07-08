@@ -13,10 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import won.reservation.domain.Category;
 import won.reservation.service.CategoryService;
 
-
-
 @Controller
-@RequestMapping(value= {"/", "/category"})
+@RequestMapping(value= {"/category"})
 public class CategoryController {
 	
 	@Autowired
@@ -50,11 +48,8 @@ public class CategoryController {
 	@PostMapping
 	@ResponseBody
 	@RequestMapping("/update")
-	public String update(@ModelAttribute("category") Category category) {
+	public void update(@ModelAttribute("category") Category category) {
 		categoryService.update(category);
-		System.out.println(category.getId());
-		System.out.println(category.getName());
-		return "update1";
 	}
 	
 }

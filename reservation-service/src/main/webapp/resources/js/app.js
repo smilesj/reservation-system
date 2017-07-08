@@ -1,12 +1,17 @@
 $(function(){
-	console.log("gggg");
-	$(".removebtn").on("click", remove);
-	// $(".removebtn").on("click", "input[name=id]", remove);
-	$(".updatebtn").on("click", update2);
+	var updatebtn = document.getElementsByClassName("modifybtn");
+	for(var i = 0; i < updatebtn.length; i++) {
+		updatebtn[i].addEventListener("click", modify, true);
+	}
+	
+	var removebtn = document.getElementsByClassName("removebtn");
+	for(var i = 0; i < removebtn.length; i++) {
+		removebtn[i].addEventListener("click", remove, true);
+	}
 });
 
 function remove(){
-	var elem = $(this).parent("li");
+	var elem = $(this).parent("td");
 	var id = $(this).siblings("input[name=id]").val(); // 형제노드찾기
 	$.ajax({
 		method:'GET',
@@ -15,16 +20,14 @@ function remove(){
 			"id" : id
 		}, 
 		success:function(data){
-			console.log(data);
 			elem.remove();
 		}
 	});
 }
 
-function update2(){
+function modify(){
 	var id = $(this).siblings("input[name=id]").val();
 	var name = $(this).siblings("input[name=name]").val();
-	console.log("update btn click "+id +"/"+name);
 	$.ajax({
 		method:'POST',
 		url:"/category/update",
