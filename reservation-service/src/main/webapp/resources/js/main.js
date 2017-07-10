@@ -16,13 +16,13 @@ $(function(){
 		
 	// 즉시 실행함수
 	(startInterval = function(){
-		interval = setInterval(preVisual, 2000);
+		interval = setInterval(preVisualRolling, 2000);
 	})();
 	
 	// 이전버튼
-	$(".prev_inn").on("click", preVisual);
+	$(".prev_inn").on("click", preVisualRolling);
 	// 다음버튼
-	$(".nxt_inn").on("click", nextVisual);
+	$(".nxt_inn").on("click", nextVisualRolling);
 	
 	function clearEvent(){
 		clearInterval(interval);
@@ -30,7 +30,7 @@ $(function(){
 		timeout = setTimeout(startInterval, 2000);
 	}
 	
-	function preVisual() {
+	function preVisualRolling() {
 		cnt--;
 		$(".item").animate({'right': +(cnt*size)+'px'}, 'normal');
 		if(cnt <= 0){
@@ -40,7 +40,7 @@ $(function(){
 		clearEvent();
 	}
 		
-	function nextVisual(){
+	function nextVisualRolling(){
 		cnt++;
 		$(".item").animate({'left': -(cnt*size)+'px'}, 'normal');
 		if(cnt == len){
