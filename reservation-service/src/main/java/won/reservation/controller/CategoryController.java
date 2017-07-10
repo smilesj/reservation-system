@@ -22,7 +22,7 @@ public class CategoryController {
 	private CategoryService categoryService;
 	
 	@GetMapping
-	public ModelAndView index() {
+	public ModelAndView get() {
 		ModelAndView mav = new ModelAndView("mainpage");
 		mav.addObject("category", categoryService.readCategory());
 		return mav;
