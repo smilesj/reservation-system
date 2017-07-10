@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -76,6 +78,25 @@
             </div>
             <div class="section_event_tab">
                 <ul class="event_tab_lst tab_lst_min">
+                	<c:set var="category_length" value="${fn:length(category)-1 }"></c:set>
+                	<c:forEach var="item" items="${category }" varStatus="i">
+                		<c:if test="${i.index == 0 }">
+                			<li class="item" data-category="${item.id }">
+                        	<a class="anchor active"> <span>${item.name }</span> </a>
+                    	</li>
+                		</c:if>
+                		<c:if test="${i.index == category_length }">
+                			<li class="item" data-category="${item.id }">
+                        		<a class="anchor last"> <span>${item.name }</span> </a>
+                    		</li>
+                		</c:if>
+                 		<c:if test="${i.index != 0 && i.index !=  category_length}">
+	                		<li class="item" data-category="${item.id }">
+	                        	<a class="anchor"> <span>${item.name }</span> </a>
+	                    	</li>
+                    	</c:if>
+                	</c:forEach>
+<!--                 
                     <li class="item" data-category="1">
                         <a class="anchor active"> <span>전체</span> </a>
                     </li>
@@ -83,7 +104,7 @@
                         <a class="anchor"> <span>전시</span> </a>
                     </li>
                     <li class="item" data-category="3">
-                        <!-- [D] 활성화 된 anchor는 active 추가 -->
+                        [D] 활성화 된 anchor는 active 추가
                         <a class="anchor"> <span>뮤지컬</span> </a>
                     </li>
                     <li class="item" data-category="4">
@@ -103,7 +124,7 @@
                     </li>
                     <li class="item" data-category="9">
                         <a class="anchor last"> <span>키즈</span> </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <div class="section_event_lst">
@@ -177,5 +198,6 @@
         </div>
     </footer>
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="resources/js/main.js"></script>
 </html>

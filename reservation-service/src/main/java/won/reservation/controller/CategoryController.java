@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,18 +23,18 @@ public class CategoryController {
 	
 	@GetMapping
 	public ModelAndView index() {
-		ModelAndView mav = new ModelAndView("index");
-		mav.addObject("list", categoryService.readCategory());
+		ModelAndView mav = new ModelAndView("mainpage");
+		mav.addObject("category", categoryService.readCategory());
 		return mav;
 	}
 	
 	@PostMapping
 	public String create(@RequestParam String name) {
 		if(name == null || "".equals(name)) {
-			return "redirect:/";
+			return "redirect:/category";
 		}else {
 			int result = categoryService.addCategory(name);
-			return "redirect:/";
+			return "redirect:/category";
 		}
 	}
 	
