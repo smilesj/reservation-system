@@ -6,7 +6,7 @@ $(function(){
 	}
 
 	var size = $(".visual_img").children().outerWidth();	// 이미지 한 개의사이즈
-	var len = $(".visual_img").children().length;
+	var len = $(".visual_img").children().length-2;
 	var cnt = 0;
 	var interval = null;
 	var timeout = null;
@@ -30,18 +30,23 @@ $(function(){
 		timeout = setTimeout(startInterval, 2000);
 	}
 	
-	function preVisual(){
-		cnt++;
-		var move = cnt%len;
-		if(move < 0) move *= -1;
-		$(".item").animate({'left': -(move*size)+'px'}, 'normal');
+	function preVisual() {
+		cnt--;
+		$(".item").animate({'right': +(cnt*size)+'px'}, 'normal');
+		if(cnt <= 0){
+			cnt = len;
+			$(".item").animate({'right': +(cnt*size)+'px'}, 0);
+		}
 		clearEvent();
 	}
-	
+		
 	function nextVisual(){
-		cnt--;
-		var move = cnt%len;
-		$(".item").animate({'left': +(move*size)+'px'}, 'normal');
+		cnt++;
+		$(".item").animate({'left': -(cnt*size)+'px'}, 'normal');
+		if(cnt == len){
+			cnt = 0;
+			$(".item").animate({'left': '0px'}, 0);
+		}
 		clearEvent();
 	}
 	
