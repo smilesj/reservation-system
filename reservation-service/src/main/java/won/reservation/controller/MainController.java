@@ -10,7 +10,8 @@ public class MainController {
 	
 	@GetMapping
 	public String index() {
-		return "redirect:/category";
+		//return "redirect:/category";
+		return "mainpage";
 	}
 	
 
