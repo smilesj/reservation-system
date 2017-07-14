@@ -73,9 +73,9 @@
                         </div>
                     </div>
                     <div class="group_btn_goto">
-                        <a class="btn_goto_home" title="홈페이지" href="#" target="siteUrl"> <i class="fn fn-home1"></i> </a>
-                        <a class="btn_goto_tel" title="전화" href="#"> <i class="fn fn-call1"></i> </a>
-						<a class="btn_goto_mail" title="이메일" href="#"> <i class="fn fn-mail1"></i> </a>
+                        <a class="btn_goto_home" title="홈페이지" href="${product.displayInfo.homepage }" target="siteUrl"> <i class="fn fn-home1"></i> </a>
+                        <a class="btn_goto_tel" title="전화" href="tel:${product.displayInfo.tel }"> <i class="fn fn-call1"></i> </a>
+						<a class="btn_goto_mail" title="이메일" href="mailto:${product.displayInfo.email }"> <i class="fn fn-mail1"></i> </a>
                         <a href="#" class="btn_goto_path" title="길찾기"> <i class="fn fn-path-find1"></i> </a>
                         <a href="#" class="fn fn-share1 naver-splugin btn_goto_share" title="공유하기"></a>
                     </div>
@@ -220,7 +220,7 @@
 							<!-- [D] 모바일 브라우저에서 접근 시 column2 추가와 btn_navigation 요소 추가 -->
                             <div class="bottom_common_path column2">
                                 <a href="#" class="btn_path"> <i class="fn fn-path-find2"></i> <span>길찾기</span> </a>
-								<a hewf="#" class="btn_navigation before"> <i class="fn fn-navigation2"></i> <span>내비게이션</span> </a>
+								<a href="#" class="btn_navigation before"> <i class="fn fn-navigation2"></i> <span>내비게이션</span> </a>
                             </div>
                         </div>
                     </div>
@@ -239,5 +239,6 @@
     </footer>
     <div id="photoviwer"></div>
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/resources/js/detail.js"></script>
 </html>
