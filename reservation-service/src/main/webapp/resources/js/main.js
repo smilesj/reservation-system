@@ -60,7 +60,7 @@ $(function(){
 				$(".lst_event_box:last").empty();
 				$.ajax({
 					method : "GET",
-					url : "/api/products/"+rest
+					url : "/api/products/info/"+rest
 				}).done(function(data){
 					$(".event_lst_txt .pink").html(data.cnt+"개"); // 카테고리별 상품 총 개수
 					
@@ -89,7 +89,7 @@ $(function(){
 				
 				$.ajax({
 					method : "GET",
-					url : "/api/products/"+rest
+					url : "/api/products/info/"+rest
 				}).done(function(data){
 
 					var leftSize = $(".lst_event_box:first .item").length;

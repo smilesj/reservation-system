@@ -19,12 +19,12 @@ public class ProductController {
 	@Autowired
 	ProductService service;
 	
-	@GetMapping("/{start}")
+	@GetMapping("/info/{start}")
 	public Map<String, Object> list(@PathVariable int start) {
 		return service.readProductInfo(start*displaynum);
 	}
 
-	@GetMapping("/{categoryId}/start/{start}")
+	@GetMapping("/info/{categoryId}/start/{start}")
 	public Map<String, Object> listCategory(@PathVariable(name = "categoryId") int categoryId, @PathVariable(name = "start") int start) {
 		return service.readProductInfoCategory(categoryId, start*displaynum);
 	}
