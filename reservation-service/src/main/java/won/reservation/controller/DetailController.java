@@ -11,8 +11,8 @@ import won.reservation.service.ProductService;
 @Controller
 public class DetailController {
 
-	ProductService productService;
-	
+	private ProductService productService;
+
 	@Autowired
 	public DetailController(ProductService productService) {
 		this.productService = productService;

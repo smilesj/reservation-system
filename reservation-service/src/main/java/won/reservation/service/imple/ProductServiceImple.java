@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import won.reservation.dao.DisplayInfoDao;
 import won.reservation.dao.FileDao;
 import won.reservation.dao.ProductDao;
 import won.reservation.domain.Product;
@@ -18,10 +19,13 @@ import won.reservation.service.ProductService;
 public class ProductServiceImple implements ProductService {
 	
 	@Autowired
-	ProductDao productDao;
+	private ProductDao productDao;
 	
 	@Autowired
-	FileDao fileDao;
+	private FileDao fileDao;
+	
+	@Autowired
+	private DisplayInfoDao displayInfoDao;
 	
 	@Override
 	public List<Product> readProduct() {
@@ -32,6 +36,7 @@ public class ProductServiceImple implements ProductService {
 	public ProductDetailInfo readProduct(Integer productId) {
 		ProductDetailInfo product = productDao.select(productId);
 		product.setProductImg(fileDao.selectByProductId(productId));
+		product.setDisplayInfo(displayInfoDao.select(productId));
 		return product;
 	}
 

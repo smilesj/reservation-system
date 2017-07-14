@@ -16,10 +16,10 @@
         <div class="header fade">
             <header class="header_tit">
                 <h1 class="logo">
-                    <a href="#" class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
-                    <a href="#" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
+                    <a href="http://www.naver.com" class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
+                    <a href="/" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
                 </h1>
-                <a href="#" class="btn_my"> <span title="내 예약">MY</span> </a>
+                <a href="/myreservation" class="btn_my"> <span title="내 예약">MY</span> </a>
             </header>
         </div>
         <div class="ct main">
@@ -27,10 +27,10 @@
                 <div class="section_visual">
                     <header>
                         <h1 class="logo">
-                            <a href="#" class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
-                            <a href="#" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
+                            <a href="http://www.naver.com" class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
+                            <a href="/" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
                         </h1>
-                        <a href="#" class="btn_my"> <span title="내 예약">MY</span> </a>
+                        <a href="/myreservation" class="btn_my"> <span title="내 예약">MY</span> </a>
                     </header>
                     <div class="pagination">
                         <div class="bg_pagination"></div>
@@ -204,16 +204,16 @@
                             <div class="store_info">
                                 <div class="store_addr_wrap">
                                     <span class="fn fn-pin2"></span>
-                                    <p class="store_addr store_addr_bold">서울특별시 종로구 종로33길 15 </p>
+                                    <p class="store_addr store_addr_bold">${product.displayInfo.placeStreet } </p>
                                     <p class="store_addr">
                                         <span class="addr_old">지번</span>
-                                        <span class="addr_old_detail">서울특별시 종로구 연지동 270 </span>
+                                        <span class="addr_old_detail">${product.displayInfo.placeLot } </span>
                                     </p>
-                                    <p class="store_addr addr_detail">두산아트센터 연강홀</p>
+                                    <p class="store_addr addr_detail">${product.displayInfo.placeName }</p>
                                 </div>
                                 <div class="lst_store_info_wrap">
                                     <ul class="lst_store_info">
-                                        <li class="item"> <span class="item_lt"> <i class="fn fn-call2"></i> <span class="sr_only">전화번호</span> </span> <span class="item_rt"> <a href="tel:02-548-0597" class="store_tel">02-548-0597</a></span> </li>
+                                        <li class="item"> <span class="item_lt"> <i class="fn fn-call2"></i> <span class="sr_only">전화번호</span> </span> <span class="item_rt"> <a href="tel:${product.displayInfo.tel }" class="store_tel">${product.displayInfo.tel }</a></span> </li>
                                     </ul>
                                 </div>
                             </div>
