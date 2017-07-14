@@ -47,7 +47,7 @@ $(function(){
 
 	})();
 
-	var product_module = function(categoryId, start){
+	var product_info_module = function(categoryId, start){
 		return {
 			getList : function getProductList(){
 				var rest = "";
@@ -126,7 +126,7 @@ $(function(){
 	$(".prev_inn").on("click",rolling.preRolling);
 	$(".nxt_inn").on("click", rolling.nextRolling);
 	
-	var product = product_module.call(this, 0, start);
+	var product = product_info_module.call(this, 0, start);
 	product.getList();
 	
 	$(".event_tab_lst .item").on("click", anchorClick);
@@ -135,7 +135,7 @@ $(function(){
 	$(".more .btn").on("click", function(){
 		start++;
 		var categoryId = $(".active").parent().attr("data-category");
-		var product = product_module.call(this, categoryId, start);
+		var product = product_info_module.call(this, categoryId, start);
 		product.getMore();
 	});
 	
@@ -144,17 +144,17 @@ $(function(){
 		$(".anchor").removeClass("active");
 		$(this).find(".anchor").addClass("active");
 		var categoryId = $(this).attr("data-category");
-		var product = product_module.call(this, categoryId, start);
+		var product = product_info_module.call(this, categoryId, start);
 		product.getList();
-	}	
-});
+	}
+	
+	$(window).scroll(function() {
+	    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+	    	start++;
+	    	var categoryId = $(".active").parent().attr("data-category");
+			var product = product_info_module.call(this, categoryId, start);
+			product.getMore();
+	    }
+	});
 
-$(window).scroll(function() {
-    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-    	start++;
-    	var categoryId = $(".active").parent().attr("data-category");
-		var product = product_module.call(this, categoryId, start);
-		product.getMore();
-    }
 });
-
