@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import won.reservation.service.CategoryService;
 
 @Controller
-@RequestMapping("/")
 public class MainController {
 	
 	@Autowired
 	private CategoryService categoryService;
 	
 	@GetMapping
+	@RequestMapping("/")
 	public String main(Model model) {
 		model.addAttribute("category", categoryService.readCategory());
 		return "mainpage";

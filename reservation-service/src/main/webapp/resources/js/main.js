@@ -157,4 +157,7 @@ $(function(){
 	    }
 	});
 
+	$(".lst_event_box").on("click", function(){
+		console.log("click");
+	});
 });

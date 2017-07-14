@@ -12,9 +12,7 @@ public class ProductInfo {
 	public ProductInfo() {
 	}
 	
-	public ProductInfo(int productId, String productName, String fileName, String saveFileName, String placeName,
-			String description) {
-		super();
+	public ProductInfo(int productId, String productName, String fileName, String saveFileName, String placeName, String description) {
 		this.productId = productId;
 		this.productName = productName;
 		this.fileName = fileName;
