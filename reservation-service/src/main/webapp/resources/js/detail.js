@@ -13,5 +13,20 @@ $(function(){
 		}
 	});
 	
+	$(".section_info_tab .info_tab_lst ._detail").on("click", function() {
+		event.preventDefault();
+		$(".section_info_tab .info_tab_lst").find("a").removeClass("active");
+		$(this).children("a").addClass("active");
+		$(".detail_area_wrap").removeClass("hide");
+		$(".detail_location").addClass("hide");
+	});
 	
+	$(".section_info_tab .info_tab_lst ._path").on("click", function() {
+		event.preventDefault();
+		$(".section_info_tab .info_tab_lst").find("a").removeClass("active");
+		$(this).children("a").addClass("active");
+		$(".detail_area_wrap").addClass("hide");
+		$(".detail_location").removeClass("hide");
+	});
+		
 });
