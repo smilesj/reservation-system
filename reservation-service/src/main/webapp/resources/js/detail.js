@@ -122,5 +122,31 @@ $(function(){
 		$("#photoviwer").css("display", "none");
 	});
 	
+	var startX = 0;
+	var endX = 0;
+	
+	// 터치
+	$(".visual_img").bind("touchstart", function(e){
+		startX = e.targetTouches[0].pageX;
+	});
+	
+	$(".visual_img").bind("touchmove", function(e){
+		var moveX = e.targetTouches[0].pageX;
+		if(startX < moveX){
+			$(".visual_img .item").css("left", -moveX+"px");
+		}else{
+			$(".visual_img .item").css("left", +moveX+"px");
+		}
+	});
+	
+	$(".visual_img").bind("touchend", function(e){
+		endX = e.changedTouches[0].pageX;
+		console.log("endX : " + endX);
+		if(startX - endX < 20){
+			carousel.prev();
+		}else if(endX - startX < 20){
+			carousel.next();
+		}
+	});
 
 });
