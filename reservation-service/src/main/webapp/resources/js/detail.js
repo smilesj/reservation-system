@@ -121,11 +121,7 @@ $(function(){
 	
 	$(".visual_img").bind("touchmove", function(e){
 		var moveX = e.targetTouches[0].pageX;
-		if(startX < moveX){
-			$(".visual_img .item").css("left", -moveX+"px");
-		}else{
-			$(".visual_img .item").css("left", -moveX+"px");
-		}
+		$(".visual_img .item").css("left", -moveX+"px");
 	});
 	
 	$(".visual_img").bind("touchend", function(e){
