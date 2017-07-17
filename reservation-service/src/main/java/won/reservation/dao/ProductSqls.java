@@ -2,8 +2,8 @@ package won.reservation.dao;
 
 public class ProductSqls {
 	static final String SELECT_ALL = "select * from product";
-	static final String SELECT_DETAIL_BY_PRODUCT_ID = "select p.id product_id, p.name product_name, p.description description, d.content content, p.event " + 
-										"from product p, product_detail d " + 
+	static final String SELECT_DETAIL_BY_PRODUCT_ID = "select p.id product_id, p.name product_name, p.description description, d.content content, p.event event, s.sales sales " + 
+										"from product p, product_detail d, (select if(sales_end >= now(), if(sales_flag = 1, '판매가능', '매진'), '판매기간종료') sales from product where id = :productid) s " + 
 										"where p.id = d.product_id and p.id = :productid";
 	static final String SELECT_BY_CATEGORYID = "select * from product where category_id = :categoryid";
 	static final String COUNT_ALL = "select count(*) cnt from product";

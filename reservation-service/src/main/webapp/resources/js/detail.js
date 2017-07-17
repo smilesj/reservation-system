@@ -88,4 +88,9 @@ $(function(){
 		}
 		$(".figure_pagination span:first").html(pageNum);
 	});
+	
+	// 예매하기 버튼
+	$(".section_btn").on("click", function(){
+		alert($("#product_sales").val());
+	});
 });

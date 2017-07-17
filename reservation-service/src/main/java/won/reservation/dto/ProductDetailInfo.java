@@ -13,6 +13,7 @@ public class ProductDetailInfo {
 	private List<File> productImg;
 	private String content;
 	private String event;
+	private String sales;
 	// 한줄평 리스트
 	// 오시는길에 관련된 정보 DisplayInfo
 	private DisplayInfo displayInfo;
@@ -21,13 +22,14 @@ public class ProductDetailInfo {
 		
 	}
 
-	public ProductDetailInfo(Integer productId, String productName, String description, List<File> productImg, String content, String event, DisplayInfo displayInfo) {
+	public ProductDetailInfo(Integer productId, String productName, String description, List<File> productImg, String content, String event, String sales, DisplayInfo displayInfo) {
 		this.productId = productId;
 		this.productName = productName;
 		this.description = description;
 		this.productImg = productImg;
 		this.content = content;
 		this.event = event;
+		this.sales = sales;
 		this.displayInfo = displayInfo;
 	}
 	
@@ -77,6 +79,14 @@ public class ProductDetailInfo {
 
 	public void setEvent(String event) {
 		this.event = event;
+	}
+
+	public String getSales() {
+		return sales;
+	}
+
+	public void setSales(String sales) {
+		this.sales = sales;
 	}
 
 	public DisplayInfo getDisplayInfo() {
