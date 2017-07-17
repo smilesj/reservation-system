@@ -10,7 +10,25 @@
     <title>네이버 예약</title>
     <link href="/resources/css/style.css" rel="stylesheet">
 </head>
-
+<style>
+	#photoviwer {
+		position:absolute;
+   		top:50px;
+    	left:0;
+    	width:100%;
+    	height:100%;
+    	display:none;
+    	background-color: white;
+    	display: none;
+    	opacity: 0.9;
+	}
+		
+	#photoviwer ul .item img{
+	    width: 70%;
+		height: 70%;
+	}
+	
+</style>
 <body>
     <div id="container">
         <div class="header fade">
@@ -117,12 +135,12 @@
                                 <span class="join_count"><em class="green">${comment.size() }건</em> 등록</span>
                             </div>
                             <ul class="list_short_review">
-                            	<c:forEach var="commentitem" items="${comment }" end="2">
+                            	<c:forEach var="commentitem" items="${comment }" end="2" varStatus="status">
                             	<li class="list_item">
                                     <div>
                                         <div class="review_area">
                                         	<c:if test="${commentitem.commentImg[0] ne null }">
-                                        	<div class="thumb_area">
+                                        	<div class="thumb_area" data-category="${commentitem.commentId }">
                                                 <a href="#" class="thumb" title="이미지 크게 보기"> <img width="90" height="90" class="img_vertical_top" src="${commentitem.commentImg[0].saveFileName }" alt="리뷰이미지"> </a> <span class="img_count">${commentitem.commentImg.size() }</span>
                                             </div>	
                                         	</c:if>
@@ -222,8 +240,20 @@
             <span class="copyright">© NAVER Corp.</span>
         </div>
     </footer>
-    <div id="photoviwer"></div>
+    <div id="photoviwer">
+    	<span class="_close">X</span>
+    	<h2>팝업테스트입니다.</h2>
+		<ul>
+		
+		</ul>
+    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script id="photoviwer-item-template" type="text/x-handlebars-template">
+	<li class="item">
+		<img alt="{{fileName}}" class="img_thumb" src="{{saveFileName}}"> 
+	</li>                        
+</script>
 <script src="/resources/js/detail.js"></script>
 </html>

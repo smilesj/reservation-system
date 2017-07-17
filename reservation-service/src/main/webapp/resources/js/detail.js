@@ -69,19 +69,19 @@ $(function(){
 		}
 	})();
 	carousel.init.bind($(".visual_img"))();
-	$(".prev_inn").on("click", carousel.prev.bind($(".visual_img")));
-	$(".nxt_inn").on("click", carousel.next.bind($(".visual_img")));
+	$(".group_visual .prev_inn").on("click", carousel.prev.bind($(".visual_img")));
+	$(".group_visual .nxt_inn").on("click", carousel.next.bind($(".visual_img")));
 	
 	var pageNum = 1;
 	var pageMax = Number($(".figure_pagination span:last").html());
-	$(".prev_inn").on("click", function(){
+	$(".group_visual .prev_inn").on("click", function(){
 		pageNum--;
 		if(pageNum < 1){
 			pageNum = pageMax;
 		}
 		$(".figure_pagination span:first").html(pageNum);
 	});
-	$(".nxt_inn").on("click", function(){
+	$(".group_visual .nxt_inn").on("click", function(){
 		pageNum++;
 		if(pageNum > pageMax){
 			pageNum = 1;
@@ -92,5 +92,32 @@ $(function(){
 	// 예매하기 버튼
 	$(".section_btn").on("click", function(){
 		alert($("#product_sales").val());
+	});
+	
+
+	// 레이어팝업
+	$(".review_area .thumb_area").on("click", function(){
+		console.log("img click");
+		$("#photoviwer").css("display", "block");
+		var commentId = $(this).attr("data-category");
+		console.log(commentId);
+		$.ajax({
+			method : "GET",
+			url : "/api/files/"+commentId,
+		}).done(function(data){
+			$("#photoviwer>ul").empty();
+			$.each(data, function(index, commentImg){
+				var dummy = $("#photoviwer-item-template").html();
+				var template = Handlebars.compile(dummy);
+				var source = commentImg;
+				var item = template(source);
+				$("#photoviwer>ul").append(item);
+			});
+		});
+	});
+	
+
+	$("#photoviwer ._close").on("click", function(){
+		$("#photoviwer").css("display", "none");
 	});
 });
