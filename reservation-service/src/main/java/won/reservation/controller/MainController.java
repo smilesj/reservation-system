@@ -21,4 +21,10 @@ public class MainController {
 		return "mainpage";
 	}
 	
+	@GetMapping
+	@RequestMapping("/review")
+	public String review() {
+		return "review";
+	}
+	
 }
