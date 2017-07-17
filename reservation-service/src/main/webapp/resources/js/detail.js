@@ -118,10 +118,9 @@ $(function(){
 		});
 	});
 	
-
 	$("#photoviwer ._close").on("click", function(){
 		$("#photoviwer").css("display", "none");
 	});
 	
-	
+
 });
