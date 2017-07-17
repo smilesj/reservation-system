@@ -192,10 +192,17 @@
                                     <li class="detail_info_lst">
                                         <strong class="in_tit">[소개]</strong>
                                         <p class="in_dsc">
-                                            웰메이드 창작 뮤지컬의 대표 브랜드 '김수로 프로젝트' 최신작! 연극, 뮤지컬, 무용 등 매년 작품성 있는 창작 공연을 선보이며, 대한민국 대표 웰메이드 창작 브랜드로 자리매김한 '김수로 프로젝트'의 최신작 입니다. 웰메이드 창작 뮤지컬의 대표 브랜드 '김수로 프로젝트' 최신작! 연극, 뮤지컬, 무용 등 매년 작품성 있는 창작 공연을 선보이며, 대한민국 대표 웰메이드 창작 브랜드로 자리매김한 '김수로 프로젝트'의 최신작 입니다.
+                                            ${product.content}
                                         </p>
                                     </li>
-                                    <li class="detail_info_lst"> <strong class="in_tit">[공지사항]</strong>
+                                    <c:forEach var="item" items="${detail }">
+                                    <li class="detail_info_lst">
+                                        <ul class="in_img_group">
+                                            <li class="in_img_lst"> <img alt="${item.fileName }" class="img_thumb" src="${item.saveFileName }"> </li>
+                                        </ul>
+                                    </li>
+                                    </c:forEach>
+<!--                                     <li class="detail_info_lst"> <strong class="in_tit">[공지사항]</strong>
                                         <ul class="in_img_group">
                                             <li class="in_img_lst"> <img alt="" class="img_thumb" src="https://ssl.phinf.net/naverbooking/20170131_238/14858250829398Pnx6_JPEG/%B0%F8%C1%F6%BB%E7%C7%D7.jpg?type=a1000"> </li>
                                         </ul>
@@ -204,7 +211,7 @@
                                         <ul class="in_img_group">
                                             <li class="in_img_lst"> <img alt="" class="img_thumb" data-lazy-image="https://ssl.phinf.net/naverbooking/20170131_255/1485825099482NmYMe_JPEG/%B0%F8%BF%AC%C1%A4%BA%B8.jpg?type=a1000"> </li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>

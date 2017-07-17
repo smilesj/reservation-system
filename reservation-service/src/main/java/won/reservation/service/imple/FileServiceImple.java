@@ -25,6 +25,11 @@ public class FileServiceImple implements FileService {
 	}
 	
 	@Override
+	public List<File> readProductDetailImgList(Integer productId) {
+		return dao.selectDetailByProductId(productId);
+	}
+	
+	@Override
 	public List<File> readByReservationUserCommentId(Integer reservationUserCommentId) {
 		return dao.selectByReservationUserCommentId(reservationUserCommentId);
 	}

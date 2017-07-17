@@ -30,7 +30,13 @@ public class FileDao {
 	public List<File> selectByProductId(Integer productId) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("productid", productId);
-		return jdbc.query(FileSqls.SELECT_BY_PRODUCT_ID,params, rowMapper);
+		return jdbc.query(FileSqls.SELECT_BY_PRODUCT_ID, params, rowMapper);
+	}
+	
+	public List<File> selectDetailByProductId(Integer productId) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("productid", productId);
+		return jdbc.query(FileSqls.SELECT_DETAIL_BY_PRODUCT_ID, params, rowMapper);
 	}
 	
 	public List<File> selectByReservationUserCommentId(Integer reservationUserCommentId) {
@@ -38,4 +44,5 @@ public class FileDao {
 		params.put("commentid", reservationUserCommentId);
 		return jdbc.query(FileSqls.SELECT_COMMENT_BY_PRODUCT_ID, params, rowMapper);
 	}
+	
 }
