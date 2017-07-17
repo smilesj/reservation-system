@@ -1,5 +1,5 @@
 $(function(){
-
+	$(".lazy").lazyload();
 	$(".section_store_details .bk_more").on("click", function(){
 
 		if($(".section_store_details ._open").css("display") != 'none'){

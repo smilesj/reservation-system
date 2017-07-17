@@ -198,7 +198,7 @@
                                     <c:forEach var="item" items="${detail }">
                                     <li class="detail_info_lst">
                                         <ul class="in_img_group">
-                                            <li class="in_img_lst"> <img alt="${item.fileName }" class="img_thumb" src="${item.saveFileName }"> </li>
+                                            <li class="in_img_lst"> <img alt="${item.fileName }" class="img_thumb lazy" data-original="${item.saveFileName }"> </li>
                                         </ul>
                                     </li>
                                     </c:forEach>
@@ -278,6 +278,7 @@
 	</li>                        
 </script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=7HYSSZyvxLo0lyAcabtI&submodules=geocoder"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
 <script src="/resources/js/detail.js"></script>
 <script src="/resources/js/map.js"></script>
 </html>
