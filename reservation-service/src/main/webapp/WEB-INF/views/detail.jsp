@@ -241,11 +241,10 @@
         </div>
     </footer>
     <div id="photoviwer">
-    	<span class="_close">X</span>
     	<h2>팝업테스트입니다.</h2>
-		<ul>
-		
-		</ul>
+    	<span class="_close">X</span>
+    	<span class="photo_count"></span>
+		<ul></ul>
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

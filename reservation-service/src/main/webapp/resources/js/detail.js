@@ -106,6 +106,8 @@ $(function(){
 			url : "/api/files/"+commentId,
 		}).done(function(data){
 			$("#photoviwer>ul").empty();
+			$("#photoviwer .photo_count").empty();
+			$("#photoviwer .photo_count").append("<em class='green'>1</em>/"+data.length);
 			$.each(data, function(index, commentImg){
 				var dummy = $("#photoviwer-item-template").html();
 				var template = Handlebars.compile(dummy);
