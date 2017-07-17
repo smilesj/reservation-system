@@ -72,22 +72,11 @@ $(function(){
 	$(".group_visual .prev_inn").on("click", carousel.prev.bind($(".visual_img")));
 	$(".group_visual .nxt_inn").on("click", carousel.next.bind($(".visual_img")));
 	
+
 	var pageNum = 1;
 	var pageMax = Number($(".figure_pagination span:last").html());
-	$(".group_visual .prev_inn").on("click", function(){
-		pageNum--;
-		if(pageNum < 1){
-			pageNum = pageMax;
-		}
-		$(".figure_pagination span:first").html(pageNum);
-	});
-	$(".group_visual .nxt_inn").on("click", function(){
-		pageNum++;
-		if(pageNum > pageMax){
-			pageNum = 1;
-		}
-		$(".figure_pagination span:first").html(pageNum);
-	});
+	$(".group_visual .prev_inn").on("click", pageNumMinus);
+	$(".group_visual .nxt_inn").on("click", pageNumPlus);
 	
 	// 예매하기 버튼
 	$(".section_btn").on("click", function(){
@@ -121,7 +110,7 @@ $(function(){
 	$("#photoviwer ._close").on("click", function(){
 		$("#photoviwer").css("display", "none");
 	});
-	
+		
 	var startX = 0;
 	var endX = 0;
 	
@@ -135,7 +124,7 @@ $(function(){
 		if(startX < moveX){
 			$(".visual_img .item").css("left", -moveX+"px");
 		}else{
-			$(".visual_img .item").css("left", +moveX+"px");
+			$(".visual_img .item").css("left", -moveX+"px");
 		}
 	});
 	
@@ -144,9 +133,26 @@ $(function(){
 		console.log("endX : " + endX);
 		if(startX - endX < 20){
 			carousel.prev();
+			pageNumMinus();
 		}else if(endX - startX < 20){
 			carousel.next();
+			pageNumPlus();
 		}
 	});
 
+	function pageNumMinus(){
+		pageNum--;
+		if(pageNum < 1){
+			pageNum = pageMax;
+		}
+		$(".figure_pagination span:first").html(pageNum);
+	}
+	
+	function pageNumPlus(){
+		pageNum++;
+		if(pageNum > pageMax){
+			pageNum = 1;
+		}
+		$(".figure_pagination span:first").html(pageNum);
+	}
 });
