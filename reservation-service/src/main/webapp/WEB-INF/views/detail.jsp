@@ -17,15 +17,27 @@
     	left:0;
     	width:100%;
     	height:100%;
-    	display:none;
     	background-color: white;
+    	opacity: 0.8;
     	display: none;
-    	opacity: 0.9;
 	}
 		
 	#photoviwer ul .item img{
-	    width: 70%;
+	    width: 500px;
 		height: 70%;
+	}
+	
+	#photoviwer ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+	}
+
+	#photoviwer li {
+	    margin: 0 0 0 0;
+	    padding: 0 0 0 0;
+	    border : 0;
+	    float: left;
 	}
 	
 </style>
@@ -244,7 +256,9 @@
     	<h2>팝업테스트입니다.</h2>
     	<span class="_close">X</span>
     	<span class="photo_count"></span>
-		<ul></ul>
+    	<div>
+    		<ul></ul>
+    	</div>
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

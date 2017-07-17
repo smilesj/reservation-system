@@ -100,12 +100,12 @@ $(function(){
 		console.log("img click");
 		$("#photoviwer").css("display", "block");
 		var commentId = $(this).attr("data-category");
-		console.log(commentId);
 		$.ajax({
 			method : "GET",
 			url : "/api/files/"+commentId,
 		}).done(function(data){
-			$("#photoviwer>ul").empty();
+			$("#photoviwer ul").css('width', data.length*500);
+			$("#photoviwer ul").empty();
 			$("#photoviwer .photo_count").empty();
 			$("#photoviwer .photo_count").append("<em class='green'>1</em>/"+data.length);
 			$.each(data, function(index, commentImg){
@@ -113,7 +113,7 @@ $(function(){
 				var template = Handlebars.compile(dummy);
 				var source = commentImg;
 				var item = template(source);
-				$("#photoviwer>ul").append(item);
+				$("#photoviwer ul").append(item);
 			});
 		});
 	});
