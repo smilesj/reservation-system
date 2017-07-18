@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,12 +29,8 @@ public class CategoryController {
 	
 	@PostMapping
 	public String create(@RequestParam String name) {
-		if(name == null || "".equals(name)) {
-			return "redirect:/category";
-		}else {
-			int result = categoryService.addCategory(name);
-			return "redirect:/category";
-		}
+		int result = categoryService.addCategory(name);
+		return "redirect:/category";
 	}
 	
 	@GetMapping

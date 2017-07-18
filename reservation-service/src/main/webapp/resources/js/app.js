@@ -1,13 +1,8 @@
 $(function(){
-	var updatebtn = document.getElementsByClassName("modifybtn");
-	for(var i = 0; i < updatebtn.length; i++) {
-		updatebtn[i].addEventListener("click", modify, true);
-	}
 	
-	var removebtn = document.getElementsByClassName("removebtn");
-	for(var i = 0; i < removebtn.length; i++) {
-		removebtn[i].addEventListener("click", remove, true);
-	}
+	$(".modifybtn").on("click", modify);
+	$(".removebtn").on("click", remove);
+
 });
 
 function remove(){

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"won.reservation.controller"})
+@ComponentScan(basePackages = {"won.reservation.controller", "won.reservation.api"})
 public class ServletContextConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean

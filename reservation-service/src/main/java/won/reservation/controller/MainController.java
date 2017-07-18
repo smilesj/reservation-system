@@ -2,9 +2,9 @@ package won.reservation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import won.reservation.service.CategoryService;
 
@@ -16,11 +16,9 @@ public class MainController {
 	private CategoryService categoryService;
 	
 	@GetMapping
-	public ModelAndView index() {
-		ModelAndView mav = new ModelAndView("mainpage");
-		mav.addObject("category", categoryService.readCategory());
-		return mav;
+	public String main(Model model) {
+		model.addAttribute("category", categoryService.readCategory());
+		return "mainpage";
 	}
 	
-
 }

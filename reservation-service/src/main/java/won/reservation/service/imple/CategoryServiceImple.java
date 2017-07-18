@@ -1,4 +1,4 @@
-package won.reservation.service;
+package won.reservation.service.imple;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import won.reservation.dao.CategoryDao;
 import won.reservation.domain.Category;
+import won.reservation.service.CategoryService;
 
 @Service
 public class CategoryServiceImple implements CategoryService {
