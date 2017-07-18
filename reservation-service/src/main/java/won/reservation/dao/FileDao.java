@@ -45,4 +45,10 @@ public class FileDao {
 		return jdbc.query(FileSqls.SELECT_COMMENT_BY_PRODUCT_ID, params, rowMapper);
 	}
 	
+	public String selectById(Integer fileId) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("fileid", fileId);
+		return jdbc.queryForObject(FileSqls.SELECT_BY_ID, params, String.class);
+	}
+	
 }

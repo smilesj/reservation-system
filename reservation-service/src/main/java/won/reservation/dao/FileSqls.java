@@ -14,4 +14,6 @@ public class FileSqls {
 	static final String SELECT_DETAIL_BY_PRODUCT_ID = "select f.* " + 
 			"from product p, product_image i, file f " + 
 			"where p.id = i.product_id and f.id = i.file_id and i.type=2 and f.content_type='상품상세' and p.id=:productid";
+
+	static final String SELECT_BY_ID = "select save_file_name from file where id = :fileid";
 }
