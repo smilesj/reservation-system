@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.mockito.internal.matchers.InstanceOf;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -46,6 +47,7 @@ public class FileDao {
 	}
 	
 	public String selectById(Integer fileId) {
+
 		Map<String, Integer> params = new HashMap<>();
 		params.put("fileid", fileId);
 		return jdbc.queryForObject(FileSqls.SELECT_BY_ID, params, String.class);

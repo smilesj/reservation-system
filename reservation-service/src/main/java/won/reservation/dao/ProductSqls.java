@@ -12,17 +12,17 @@ public class ProductSqls {
 										+ "sales_end = :sales_end, sales_flag = :sales_flag, event = :event,  modify_date = now() where id = :id";
 	static final String DELETE_BY_ID = "delete from product where id = :id";
 	
-	static final String SELECT_INFO_ALL = "select product_id, product_name, description, file_name, save_file_name, place_name " + 
-			"from( select pr.id product_id, pr.name product_name, pr.description description, pr.file_name file_name, pr.save_file_name save_file_name, d.place_name place_name " + 
-			"from (select p.id id , p.name name , p.description description, f.file_name file_name, f.save_file_name save_file_name " + 
+	static final String SELECT_INFO_ALL = "select product_id, product_name, description, file_name, file_id, place_name " + 
+			"from( select pr.id product_id, pr.name product_name, pr.description description, pr.file_name file_name, pr.id file_id, d.place_name place_name " + 
+			"from (select p.id id , p.name name , p.description description, f.file_name file_name, f.id file_id " + 
 			"from product p, product_image pi, file f " + 
 			"where pi.product_id = p.id and f.id = file_id and pi.type = 1) pr, display_info d " + 
 			"where pr.id = d.product_id) p " + 
 			"limit :displaynum offset :start";
 	
-	static final String SELECT_INFO_CATEGORY = "select product_id, product_name, description, file_name, save_file_name, place_name " + 
-			"from (select pr.id product_id, pr.name product_name, pr.description description, pr.file_name file_name, pr.save_file_name save_file_name, d.place_name place_name " + 
-			"from (select p.id id , p.name name , p.description description, f.file_name file_name, f.save_file_name save_file_name " + 
+	static final String SELECT_INFO_CATEGORY = "select product_id, product_name, description, file_name, file_id, place_name " + 
+			"from (select pr.id product_id, pr.name product_name, pr.description description, pr.file_name file_name, pr.id file_id, d.place_name place_name " + 
+			"from (select p.id id , p.name name , p.description description, f.file_name file_name, f.id file_id " + 
 			"from product p, product_image pi, file f " + 
 			"where pi.product_id = p.id and f.id = file_id and pi.type = 1 and p.category_id = :categoryid) pr, display_info d " + 
 			"where pr.id = d.product_id) p " + 

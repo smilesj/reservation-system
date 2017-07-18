@@ -91,7 +91,7 @@ $(function(){
 		var commentId = $(this).attr("data-category");
 		$.ajax({
 			method : "GET",
-			url : "/api/files/"+commentId,
+			url : "/api/files/comments/"+commentId,
 		}).done(function(data){
 			$("#photoviwer ul").css('width', data.length*500);
 			$("#photoviwer ul").empty();

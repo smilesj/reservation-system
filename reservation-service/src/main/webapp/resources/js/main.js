@@ -67,6 +67,7 @@ $(function(){
 					$(".event_lst_txt .pink").html(data.cnt+"개"); // 카테고리별 상품 총 개수
 					
 					$.each(data.list, function(index, product){
+						console.log(product);
 						var dummy = $("#project-item-template").html();
 						var template = Handlebars.compile(dummy);
 						var source = product;
