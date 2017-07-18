@@ -74,7 +74,7 @@
                             <div class="container_visual" style="width: 414px;">
                                 <ul class="visual_img">
                                 	<c:forEach var="productitem" items="${product.productImg }" varStatus="status">
-                                	<li class="item" style="width: 414px;"> <img alt="${productitem.fileName }" class="img_thumb" src="${productitem.saveFileName }"> <span class="img_bg"></span>
+                                	<li class="item" style="width: 414px;"> <img alt="${productitem.fileName }" class="img_thumb" src="/api/files/${productitem.id }"> <span class="img_bg"></span>
                                         <c:if test="${status.index eq 0 }">
                                         <div class="visual_txt">
                                             <div class="visual_txt_inn">
@@ -155,7 +155,7 @@
                                         <div class="review_area">
                                         	<c:if test="${commentitem.commentImg[0] ne null }">
                                         	<div class="thumb_area" data-category="${commentitem.commentId }">
-                                                <a href="#" class="thumb" title="이미지 크게 보기"> <img width="90" height="90" class="img_vertical_top" src="${commentitem.commentImg[0].saveFileName }" alt="리뷰이미지"> </a> <span class="img_count">${commentitem.commentImg.size() }</span>
+                                                <a href="#" class="thumb" title="이미지 크게 보기"> <img width="90" height="90" class="img_vertical_top" src="/api/files/${commentitem.commentImg[0].id }" alt="리뷰이미지"> </a> <span class="img_count">${commentitem.commentImg.size() }</span>
                                             </div>	
                                         	</c:if>
                                             <h4 class="resoc_name">${product.productName }</h4>
@@ -198,7 +198,7 @@
                                     <c:forEach var="item" items="${detail }">
                                     <li class="detail_info_lst">
                                         <ul class="in_img_group">
-                                            <li class="in_img_lst"> <img alt="${item.fileName }" class="img_thumb lazy" data-original="${item.saveFileName }"> </li>
+                                            <li class="in_img_lst"> <img alt="${item.fileName }" class="img_thumb lazy" data-original="/api/files/${item.id }"> </li>
                                         </ul>
                                     </li>
                                     </c:forEach>
@@ -274,7 +274,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
 <script id="photoviwer-item-template" type="text/x-handlebars-template">
 	<li class="item">
-		<img alt="{{fileName}}" class="img_thumb" src="{{saveFileName}}"> 
+		<img alt="{{fileName}}" class="img_thumb" src="/api/files/{{id}}"> 
 	</li>                        
 </script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=7HYSSZyvxLo0lyAcabtI&submodules=geocoder"></script>

@@ -8,7 +8,7 @@ public class FileSqls {
 	
 	static final String SELECT_COMMENT_BY_PRODUCT_ID = "select f.* " + 
 			"from reservation_user_comment_image i, file f " + 
-			"where i.file_id = f.id and f.content_type='코멘트' and reservation_user_comment_id = :commentid";
+			"where i.file_id = f.id and f.content_type='한줄평' and reservation_user_comment_id = :commentid";
 	
 	static final String SELECT_DETAIL_BY_PRODUCT_ID = "select f.* " + 
 			"from product p, product_image i, file f " + 
