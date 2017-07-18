@@ -48,6 +48,8 @@ $(function(){
 	})();
 
 	var product_info_module = function(categoryId, start){
+		
+		// 중복되는 내요을 함수로 뺴고 호출
 		return {
 			getList : function getProductList(){
 				var rest = "";
@@ -79,7 +81,7 @@ $(function(){
 				});
 			},
 			getMore : function getMore(){	
-				var categoryId = $(".active").parent().attr("data-category");
+				var categoryId = $(".active").parent().data("category");
 				
 				var rest = "";
 				if(categoryId == 0)
