@@ -72,32 +72,26 @@ $(function(){
 		$("#photoviwer").css("display", "none");
 	});
 		
-	var touch = (function(){
-		var startX = 0;
-		var endX = 0;
-	});
-	
-	
-	var startX = 0;
-	var endX = 0;
 	
 	// 터치
+	var touchStartX = 0;
+	var touchEndX = 0;
+
 	$(".visual_img").bind("touchstart", function(e){
-		startX = e.targetTouches[0].pageX;
+		touchStartX = e.targetTouches[0].pageX;
 	});
 	
 	$(".visual_img").bind("touchmove", function(e){
-		var moveX = e.targetTouches[0].pageX;
-		$(".visual_img .item").css("left", -moveX+"px");
+		var touchMoveX = e.targetTouches[0].pageX;
+		$(".visual_img .item").css("left", -touchMoveX+"px");
 	});
 	
 	$(".visual_img").bind("touchend", function(e){
-		endX = e.changedTouches[0].pageX;
-		console.log("endX : " + endX);
-		if(startX - endX < 20){
+		touchEndX = e.changedTouches[0].pageX;
+		if(touchStartX - touchEndX < 20){
 			carousel.prev();
 			pageNumMinus();
-		}else if(endX - startX < 20){
+		}else if(touchEndX - touchStartX < 20){
 			carousel.next();
 			pageNumPlus();
 		}
