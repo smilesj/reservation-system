@@ -28,10 +28,10 @@ $(function(){
 		$(".detail_area_wrap").addClass("hide");
 		$(".detail_location").removeClass("hide");
 	});
-	
+		
 	carousel.init.bind($(".visual_img"))();
-	$(".group_visual .prev_inn").on("click", carousel.prev.bind($(".visual_img")));
-	$(".group_visual .nxt_inn").on("click", carousel.next.bind($(".visual_img")));
+	$(".group_visual .prev_inn").on("click", carousel.prev);
+	$(".group_visual .nxt_inn").on("click", carousel.next);
 	
 
 	var pageNum = 1;
@@ -72,6 +72,12 @@ $(function(){
 		$("#photoviwer").css("display", "none");
 	});
 		
+	var touch = (function(){
+		var startX = 0;
+		var endX = 0;
+	});
+	
+	
 	var startX = 0;
 	var endX = 0;
 	
