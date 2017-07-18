@@ -54,7 +54,7 @@ $(function(){
 			method : "GET",
 			url : "/api/files/comments/"+commentId,
 		}).done(function(data){
-			$("#photoviwer ul").css('width', data.length*500);
+			$("#photoviwer ul").css('width', data.length*600);
 			$("#photoviwer ul").empty();
 			$("#photoviwer .photo_count").empty();
 			$("#photoviwer .photo_count").append("<em class='green'>1</em>/"+data.length);

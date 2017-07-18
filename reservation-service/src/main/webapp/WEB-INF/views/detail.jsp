@@ -18,28 +18,35 @@
     	width:100%;
     	height:100%;
     	background-color: white;
-    	opacity: 0.8;
+    	opacity: 0.9;
     	display: none;
 	}
-		
-	#photoviwer ul .item img{
-	    width: 500px;
-		height: 70%;
+	
+	#photoviwer div {
+		width : 600px;
+		height : 500px;
+		background-color : yellow;
+		margin: 0 auto;
 	}
 	
-	#photoviwer ul {
-    list-style:none;
-    margin:0;
-    padding:0;
+	#photoviwer div ul {
+    	/* list-style:none; */
+    	margin:0;
+    	padding:0;
+    	display : inline-block;
 	}
-
-	#photoviwer li {
-	    margin: 0 0 0 0;
+	
+	#photoviwer div ul li{
+    	margin: 0 0 0 0;
 	    padding: 0 0 0 0;
 	    border : 0;
 	    float: left;
 	}
 	
+	#photoviwer div ul li img{
+    	width: 600px;
+    	height : 500px;
+	}	
 </style>
 <body>
     <div id="container">
@@ -264,10 +271,18 @@
     <div id="photoviwer">
     	<h2>팝업테스트입니다.</h2>
     	<span class="_close">X</span>
-    	<span class="photo_count"></span>
     	<div>
     		<ul></ul>
+<!--     		<ul>
+    			<li><p>1</p></li>
+    			<li><p>2</p></li>
+    			<li><p>3</p></li>
+    		</ul> -->
     	</div>
+    	<span class="photo_count"></span>
+<!--     	<div>
+    		<ul></ul>
+    	</div> -->
    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
