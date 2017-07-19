@@ -24,6 +24,9 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 	
 	@Override
 	public List<CommentInfo> get(Integer productId) {
+		if(productId < 1 || productId == null) {
+			return null;
+		}
 		List<CommentInfo> list = dao.select(productId);
 		for(CommentInfo i : list) {
 			if(i.getTempFileId() != null) {
@@ -35,6 +38,9 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 	
 	@Override
 	public Double getAvgScore(Integer productId) {
+		if(productId < 1) {
+			return null;
+		}
 		return dao.selectAvgScore(productId);
 	}
 }

@@ -36,6 +36,9 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public ProductDetailInfo getProduct(Integer productId) {
+		if(productId < 1 || productId == null) {
+			return null;
+		}
 		ProductDetailInfo product = dao.select(productId);
 		product.setProductImg(fileDao.selectByProductId(productId));
 		product.setDisplayInfo(displayInfoDao.select(productId));
@@ -55,6 +58,9 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	@Transactional
 	public int remove(int id) {
+		if(id < 1) {
+			return 0;
+		}
 		return dao.delete(id);
 	}
 

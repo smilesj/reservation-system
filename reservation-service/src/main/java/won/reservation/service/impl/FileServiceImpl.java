@@ -26,16 +26,25 @@ public class FileServiceImpl implements FileService {
 	
 	@Override
 	public List<File> getProductImgs(Integer productId) {
+		if(productId < 1 || productId == null) {
+			return null;
+		}
 		return dao.selectByProductId(productId);
 	}
 	
 	@Override
 	public List<File> getProductDetailImgs(Integer productId) {
+		if(productId < 1 || productId == null) {
+			return null;
+		}
 		return dao.selectDetailByProductId(productId);
 	}
 	
 	@Override
 	public List<File> getReservationUserCommentImgs(Integer reservationUserCommentId) {
+		if(reservationUserCommentId < 1 || reservationUserCommentId == null) {
+			return null;
+		}
 		return dao.selectByReservationUserCommentId(reservationUserCommentId);
 	}
 	

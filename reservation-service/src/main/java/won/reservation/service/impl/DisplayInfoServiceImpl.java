@@ -19,6 +19,9 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 	
 	@Override
 	public DisplayInfo get(Integer productId) {
+		if(productId < 1 || productId == null) {
+			return null;
+		}
 		return dao.select(productId);
 	}
 	

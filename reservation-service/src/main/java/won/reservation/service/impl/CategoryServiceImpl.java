@@ -28,6 +28,9 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	@Transactional(readOnly = true)	
 	public Category get(int id) {
+		if(id < 0) {
+			return null;
+		}
 		return dao.selectById(id);
 	}
 
@@ -44,6 +47,9 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public int remove(int id) {
+		if(id < 0) {
+			return 0;
+		}
 		return dao.delete(id);
 	}
 	
