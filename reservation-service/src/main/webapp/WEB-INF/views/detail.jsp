@@ -240,8 +240,8 @@
     	</div>
    </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="/resources/js/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/resources/js/node_modules/handlebars/dist/handlebars.min.js"></script>
 <script id="photoviwer-item-template" type="text/x-handlebars-template">
 	<li class="item">
 		<img alt="{{fileName}}" class="img_thumb" src="/api/files/{{id}}"> 
