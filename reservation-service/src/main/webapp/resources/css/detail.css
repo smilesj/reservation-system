@@ -11,7 +11,7 @@
 }
 
 #photoviwer div {
-	width : 600px;
+	width : 414px;
 	height : 500px;
 	background-color : yellow;
 	margin: 0 auto;
@@ -32,6 +32,5 @@
 }
 
 #photoviwer div ul li img{
-   	width: 600px;
-   	height : 500px;
+   	width: 414px;
 }	

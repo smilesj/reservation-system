@@ -231,18 +231,13 @@
             <span class="copyright">© NAVER Corp.</span>
         </div>
     </footer>
-    <div id="photoviwer">
-    	<h2>팝업테스트입니다.</h2>
+    <div id="photoviwer" class="group_visual">
+    	<h2>PHOTO VIWER</h2>
     	<span class="_close">X</span>
-    	<div>
-    		<ul></ul>
-<!--     		<ul>
-    			<li><p>1</p></li>
-    			<li><p>2</p></li>
-    			<li><p>3</p></li>
-    		</ul> -->
-    	</div>
     	<span class="photo_count"></span>
+    	<div class="outer">
+    		<div class="inner"><ul class="photoul"></ul></div>
+    	</div>
    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

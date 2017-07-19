@@ -50,12 +50,13 @@ $(function(){
 		console.log("img click");
 		$("#photoviwer").css("display", "block");
 		var commentId = $(this).attr("data-category");
+		var imgWidth = $(".inner").width();
 		$.ajax({
 			method : "GET",
 			url : "/api/files/comments/"+commentId,
 		}).done(function(data){
-			$("#photoviwer ul").css('width', data.length*600);
-			$("#photoviwer ul").empty();
+			$("#photoviwer .outer .inner ul").css('width', data.length*imgWidth);
+			$("#photoviwer ul ul").empty();
 			$("#photoviwer .photo_count").empty();
 			$("#photoviwer .photo_count").append("<em class='green'>1</em>/"+data.length);
 			$.each(data, function(index, commentImg){
@@ -65,6 +66,7 @@ $(function(){
 				var item = template(source);
 				$("#photoviwer ul").append(item);
 			});
+			$(".photoul li").css('width', imgWidth);
 		});
 	});
 	
