@@ -21,15 +21,15 @@ public class CategoryController {
 	private CategoryService categoryService;
 	
 	@GetMapping
-	public ModelAndView get() {
+	public ModelAndView read() {
 		ModelAndView mav = new ModelAndView("mainpage");
-		mav.addObject("category", categoryService.readCategory());
+		mav.addObject("category", categoryService.get());
 		return mav;
 	}
 	
 	@PostMapping
 	public String create(@RequestParam String name) {
-		int result = categoryService.addCategory(name);
+		int result = categoryService.add(name);
 		return "redirect:/category";
 	}
 	

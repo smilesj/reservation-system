@@ -17,7 +17,7 @@ public class MainController {
 	@GetMapping
 	@RequestMapping("/")
 	public String main(Model model) {
-		model.addAttribute("category", categoryService.readCategory());
+		model.addAttribute("category", categoryService.get());
 		return "mainpage";
 	}
 	

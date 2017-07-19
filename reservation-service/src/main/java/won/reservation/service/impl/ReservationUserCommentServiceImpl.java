@@ -1,4 +1,4 @@
-package won.reservation.service.imple;
+package won.reservation.service.impl;
 
 import java.util.List;
 
@@ -11,20 +11,19 @@ import won.reservation.dto.CommentInfo;
 import won.reservation.service.ReservationUserCommentService;
 
 @Service
-public class ReservationUserCommentServiceImple implements ReservationUserCommentService {
+public class ReservationUserCommentServiceImpl implements ReservationUserCommentService {
 
 	private ReservationUserCommentDao dao;
-	
 	private FileDao fileDao;
 	
 	@Autowired
-	public ReservationUserCommentServiceImple(ReservationUserCommentDao dao, FileDao fileDao) {
+	public ReservationUserCommentServiceImpl(ReservationUserCommentDao dao, FileDao fileDao) {
 		this.dao = dao;
 		this.fileDao = fileDao;
 	}
 	
 	@Override
-	public List<CommentInfo> readReservationUserComment(Integer productId) {
+	public List<CommentInfo> get(Integer productId) {
 		List<CommentInfo> list = dao.selectByProductId(productId);
 		for(CommentInfo i : list) {
 			if(i.getTempFileId() != null) {
@@ -35,7 +34,7 @@ public class ReservationUserCommentServiceImple implements ReservationUserCommen
 	}
 	
 	@Override
-	public Double getReservationUserCommentAvgScore(Integer productId) {
+	public Double getAvgScore(Integer productId) {
 		return dao.getAvgScore(productId);
 	}
 }

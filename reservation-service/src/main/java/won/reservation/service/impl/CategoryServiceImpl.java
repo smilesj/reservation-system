@@ -1,4 +1,4 @@
-package won.reservation.service.imple;
+package won.reservation.service.impl;
 
 import java.util.List;
 
@@ -11,25 +11,29 @@ import won.reservation.domain.Category;
 import won.reservation.service.CategoryService;
 
 @Service
-public class CategoryServiceImple implements CategoryService {
+public class CategoryServiceImpl implements CategoryService {
 
+	private CategoryDao categoryDao;
+	
 	@Autowired
-	CategoryDao categoryDao;
+	public CategoryServiceImpl(CategoryDao categoryDao) {
+		this.categoryDao = categoryDao;
+	}
 	
 	@Override
-	public List<Category> readCategory() {
+	public List<Category> get() {
 		return categoryDao.select();
 	}
 	
 	@Override
 	@Transactional(readOnly = true)	
-	public Category readCategoryById(int id) {
+	public Category get(int id) {
 		return categoryDao.selectById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = false)
-	public int addCategory(String name) {
+	public int add(String name) {
 		return categoryDao.insert(name);
 	}
 

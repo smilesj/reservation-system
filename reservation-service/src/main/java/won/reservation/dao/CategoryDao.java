@@ -19,6 +19,7 @@ import won.reservation.domain.Category;
 
 @Repository
 public class CategoryDao {
+	
 	private NamedParameterJdbcTemplate jdbc;
 	private SimpleJdbcInsert insertAction;
 	private RowMapper<Category> rowMapper = BeanPropertyRowMapper.newInstance(Category.class);

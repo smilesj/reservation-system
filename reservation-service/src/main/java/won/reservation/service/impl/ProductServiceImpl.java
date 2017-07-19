@@ -1,4 +1,4 @@
-package won.reservation.service.imple;
+package won.reservation.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,19 +16,21 @@ import won.reservation.dto.ProductDetailInfo;
 import won.reservation.service.ProductService;
 
 @Service
-public class ProductServiceImple implements ProductService {
+public class ProductServiceImpl implements ProductService {
 	
-	@Autowired
-	private ProductDao productDao;
-	
-	@Autowired
-	private FileDao fileDao;
-	
-	@Autowired
+	private ProductDao productDao;	
+	private FileDao fileDao;	
 	private DisplayInfoDao displayInfoDao;
 	
+	@Autowired
+	public ProductServiceImpl(ProductDao productDao, FileDao fileDao, DisplayInfoDao displayInfoDao) {
+		this.productDao = productDao;
+		this.fileDao = fileDao;
+		this.displayInfoDao = displayInfoDao;
+	}
+	
 	@Override
-	public List<Product> readProduct() {
+	public List<Product> get() {
 		return productDao.select();
 	}
 	
@@ -40,9 +42,8 @@ public class ProductServiceImple implements ProductService {
 		return product;
 	}
 
-
 	@Override
-	public int addProduct(Product product) {
+	public int add(Product product) {
 		return productDao.insert(product);
 	}
 

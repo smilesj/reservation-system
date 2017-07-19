@@ -5,8 +5,8 @@ import java.util.List;
 import won.reservation.domain.File;
 
 public interface FileService {
-	public List<File> readProductImgList(Integer productId);
-	public List<File> readProductDetailImgList(Integer productId);
-	public List<File> readByReservationUserCommentId(Integer reservationUserCommentId);
-	public String read(Integer fileId);
+	public String get(Integer id);
+	public List<File> getProductImgs(Integer productId);
+	public List<File> getProductDetailImgs(Integer productId);
+	public List<File> getReservationUserCommentImgs(Integer reservationUserCommentId);
 }

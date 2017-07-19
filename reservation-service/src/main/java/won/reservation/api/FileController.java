@@ -29,14 +29,14 @@ public class FileController {
 	@GetMapping
 	@RequestMapping("/comments/{commentId}")
 	public List<File> readComments(@PathVariable(name="commentId") Integer reservationUserCommentId){
-		return fileService.readByReservationUserCommentId(reservationUserCommentId);
+		return fileService.getReservationUserCommentImgs(reservationUserCommentId);
 	}
 	
 	@GetMapping("/{fileId}")
 	public void read(@PathVariable(name="fileId") int fileId, HttpServletResponse resp) {	
 		
         String contentType = "image/jpeg";
-        String saveFileName = fileService.read(fileId);
+        String saveFileName = fileService.get(fileId);
 
         resp.setHeader("Content-Transfer-Encoding", "binary");
         resp.setHeader("Content-Type", contentType);

@@ -1,4 +1,4 @@
-package won.reservation.service.imple;
+package won.reservation.service.impl;
 
 import java.util.List;
 
@@ -10,32 +10,33 @@ import won.reservation.domain.File;
 import won.reservation.service.FileService;
 
 @Service
-public class FileServiceImple implements FileService {
+public class FileServiceImpl implements FileService {
 
 	private FileDao dao;
 	
 	@Autowired
-	public FileServiceImple(FileDao dao) {
+	public FileServiceImpl(FileDao dao) {
 		this.dao = dao;
 	}
 	
 	@Override
-	public List<File> readProductImgList(Integer productId) {
+	public String get(Integer id) {
+		return dao.selectById(id);
+	}
+	
+	@Override
+	public List<File> getProductImgs(Integer productId) {
 		return dao.selectByProductId(productId);
 	}
 	
 	@Override
-	public List<File> readProductDetailImgList(Integer productId) {
+	public List<File> getProductDetailImgs(Integer productId) {
 		return dao.selectDetailByProductId(productId);
 	}
 	
 	@Override
-	public List<File> readByReservationUserCommentId(Integer reservationUserCommentId) {
+	public List<File> getReservationUserCommentImgs(Integer reservationUserCommentId) {
 		return dao.selectByReservationUserCommentId(reservationUserCommentId);
 	}
 	
-	@Override
-	public String read(Integer fileId) {
-		return dao.selectById(fileId);
-	}
 }
