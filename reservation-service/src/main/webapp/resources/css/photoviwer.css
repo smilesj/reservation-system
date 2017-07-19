@@ -10,16 +10,11 @@
    	display: none;
 }
 
-
 #photoviwer div {
 	width : 100%;
-/* 	background-color : yellow; */
 	margin: 0 auto;
 }
 
-/* #photoviwer .outer{
-	border: 2px blue solid;
-} */
 
 #photoviwer .inner{
 	overflow-x: hidden;
@@ -31,14 +26,8 @@
    	margin:0;
    	padding:0;
    	display : inline-block;
-   	/*width : 이미지 전체w*/
 }
 
 #photoviwer div ul li{
     float: left;
-    /*width : */
 }
-
-/* #photoviwer div ul li img{
-   	width: 414px;
-} */

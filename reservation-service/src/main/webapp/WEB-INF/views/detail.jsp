@@ -250,6 +250,7 @@
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=7HYSSZyvxLo0lyAcabtI&submodules=geocoder"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
 <script src="/resources/js/carousel_module.js"></script>
+<script src="/resources/js/popup_carousel_module.js"></script>
 <script src="/resources/js/detail.js"></script>
 <script src="/resources/js/map.js"></script>
 </html>

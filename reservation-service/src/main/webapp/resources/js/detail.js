@@ -44,38 +44,8 @@ $(function(){
 		alert($("#product_sales").val());
 	});
 	
-
-	// 레이어팝업
-	$(".review_area .thumb_area").on("click", function(){
-		console.log("img click");
-		$("#photoviwer").css("display", "block");
-		var commentId = $(this).attr("data-category");
-		var imgWidth = $(".inner").width();
-		$.ajax({
-			method : "GET",
-			url : "/api/files/comments/"+commentId,
-		}).done(function(data){
-			$("#photoviwer .outer .inner ul").css('width', data.length*imgWidth);
-			$("#photoviwer ul ul").empty();
-			$("#photoviwer .photo_count").empty();
-			$("#photoviwer .photo_count").append("<em class='green'>1</em>/"+data.length);
-			$.each(data, function(index, commentImg){
-				var dummy = $("#photoviwer-item-template").html();
-				var template = Handlebars.compile(dummy);
-				var source = commentImg;
-				var item = template(source);
-				$("#photoviwer ul").append(item);
-			});
-			$(".photoul li").css('width', imgWidth);
-		});
-	});
 	
-	$("#photoviwer ._close").on("click", function(){
-		$("#photoviwer").css("display", "none");
-	});
-		
-	
-	// 터치
+	// 상품이미지 터치
 	var touchStartX = 0;
 	var touchEndX = 0;
 
@@ -114,4 +84,61 @@ $(function(){
 		}
 		$(".figure_pagination span:first").html(pageNum);
 	}
+	
+
+	// 레이어팝업
+	$(".review_area .thumb_area").on("click", function(){
+		$("#photoviwer").css("display", "block");
+		var commentId = $(this).attr("data-category");
+		var imgWidth = $(".inner").width();
+		$.ajax({
+			method : "GET",
+			url : "/api/files/comments/"+commentId,
+		}).done(function(data){
+			$("#photoviwer .outer .inner ul").css('width', (data.length+2)*imgWidth);
+			$("#photoviwer .outer .inner ul").empty();
+			$("#photoviwer .photo_count").empty();
+			$("#photoviwer .photo_count").append("<em class='green'>1</em>/"+data.length);
+			$.each(data, function(index, commentImg){
+				var dummy = $("#photoviwer-item-template").html();
+				var template = Handlebars.compile(dummy);
+				var source = commentImg;
+				var item = template(source);
+				$("#photoviwer ul").append(item);
+			});
+			$(".photoul li").css('width', imgWidth);
+			popcarousel.init.bind($(".photoul"))();	// 이벤트처리순서중요!
+		});
+		
+	});
+	
+	$("#photoviwer ._close").on("click", function(){
+		$("#photoviwer").css("display", "none");
+	});
+	
+	
+	// 레이어팝업 터치	
+	var popTouchStartX = 0;
+	var popTouchEndX = 0;
+	$(".photoul").bind("touchstart", function(e){
+		popTouchStartX = e.targetTouches[0].pageX;
+		popcarousel.prev();
+	});
+	
+	$(".photoul").bind(".photoul").bind("touchmove", function(e){
+		var popTouchMoveX = e.targetTouches[0].pageX;
+		$(".photoul .item").css("left", -popTouchMoveX+"px");
+	});
+	
+	$(".photoul").bind(".photoul").bind("touchend", function(e){
+		popTouchEndX = e.changedTouches[0].pageX;
+		if(popTouchStartX - popTouchEndX < 20){
+			popcarousel.prev();
+		}else if(popTouchEndX - popTouchStartX < 20){
+			popcarousel.next();
+		}
+	});
+		
+
+
 });
