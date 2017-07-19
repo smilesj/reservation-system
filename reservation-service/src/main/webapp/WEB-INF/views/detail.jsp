@@ -9,45 +9,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
     <title>네이버 예약</title>
     <link href="/resources/css/style.css" rel="stylesheet">
+    <link href="/resources/css/photoviwer.css" rel="stylesheet">
 </head>
-<style>
-	#photoviwer {
-		position:absolute;
-   		top:50px;
-    	left:0;
-    	width:100%;
-    	height:100%;
-    	background-color: white;
-    	opacity: 0.9;
-    	display: none;
-	}
-	
-	#photoviwer div {
-		width : 600px;
-		height : 500px;
-		background-color : yellow;
-		margin: 0 auto;
-	}
-	
-	#photoviwer div ul {
-    	/* list-style:none; */
-    	margin:0;
-    	padding:0;
-    	display : inline-block;
-	}
-	
-	#photoviwer div ul li{
-    	margin: 0 0 0 0;
-	    padding: 0 0 0 0;
-	    border : 0;
-	    float: left;
-	}
-	
-	#photoviwer div ul li img{
-    	width: 600px;
-    	height : 500px;
-	}	
-</style>
 <body>
     <div id="container">
         <div class="header fade">
@@ -280,9 +243,6 @@
     		</ul> -->
     	</div>
     	<span class="photo_count"></span>
-<!--     	<div>
-    		<ul></ul>
-    	</div> -->
    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
