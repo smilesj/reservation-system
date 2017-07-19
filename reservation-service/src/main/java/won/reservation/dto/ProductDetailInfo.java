@@ -7,6 +7,7 @@ import won.reservation.domain.File;
 
 //상품 디테일 페이지에서 보이는 상품 정보를 담는 DTO
 public class ProductDetailInfo {
+	
 	private Integer productId;
 	private String productName;
 	private String description;
@@ -14,13 +15,9 @@ public class ProductDetailInfo {
 	private String content;
 	private String event;
 	private String sales;
-	// 한줄평 리스트
-	// 오시는길에 관련된 정보 DisplayInfo
-	private DisplayInfo displayInfo;
+	private DisplayInfo displayInfo; // 오시는길에 관련된 정보
 	
-	public ProductDetailInfo() {
-		
-	}
+	public ProductDetailInfo() {}
 
 	public ProductDetailInfo(Integer productId, String productName, String description, List<File> productImg, String content, String event, String sales, DisplayInfo displayInfo) {
 		this.productId = productId;

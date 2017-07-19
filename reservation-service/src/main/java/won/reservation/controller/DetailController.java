@@ -26,7 +26,7 @@ public class DetailController {
 	
 	@GetMapping("/products/{productId}")
 	public String readProductDetail(Model model, @PathVariable(name="productId") Integer productId) {
-		model.addAttribute("product", productService.readProduct(productId));
+		model.addAttribute("product", productService.getProduct(productId));
 		model.addAttribute("comment", commentService.get(productId));
 		model.addAttribute("avgscore", commentService.getAvgScore(productId));
 		model.addAttribute("detail", fileService.getProductDetailImgs(productId));

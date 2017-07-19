@@ -17,8 +17,12 @@ import won.reservation.service.CategoryService;
 @RequestMapping(value= {"/category"})
 public class CategoryController {
 	
-	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	public CategoryController(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
 	
 	@GetMapping
 	public ModelAndView read() {
@@ -37,7 +41,7 @@ public class CategoryController {
 	@ResponseBody
 	@RequestMapping("/delete")
 	public String delete(@RequestParam("id") int id) {
-		categoryService.delete(id);
+		categoryService.remove(id);
 		return "success";
 	}
 	
@@ -45,7 +49,7 @@ public class CategoryController {
 	@ResponseBody
 	@RequestMapping("/update")
 	public void update(@ModelAttribute("category") Category category) {
-		categoryService.update(category);
+		categoryService.modify(category);
 	}
 	
 }

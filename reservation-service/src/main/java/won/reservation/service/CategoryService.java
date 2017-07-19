@@ -8,6 +8,6 @@ public interface CategoryService {
 	public List<Category> get();
 	public Category get(int id);
 	public int add(String name);
-	public int update(Category category);
-	public int delete(int id);
+	public int modify(Category category);
+	public int remove(int id);
 }

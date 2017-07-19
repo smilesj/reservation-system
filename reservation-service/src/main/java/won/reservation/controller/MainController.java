@@ -11,8 +11,12 @@ import won.reservation.service.CategoryService;
 @Controller
 public class MainController {
 	
-	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	public MainController(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
 	
 	@GetMapping
 	@RequestMapping("/")

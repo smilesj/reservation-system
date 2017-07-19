@@ -2,6 +2,7 @@ package won.reservation.dto;
 
 // 메인페이지에서 보이는 상품 정보를 담는 DTO
 public class ProductInfo {
+	
 	private int productId;
 	private String productName;
 	private String fileName;
@@ -9,8 +10,7 @@ public class ProductInfo {
 	private String placeName;
 	private String description;
 	
-	public ProductInfo() {
-	}
+	public ProductInfo() {}
 	
 	public ProductInfo(int productId, String productName, String fileName, int fileId, String placeName, String description) {
 		this.productId = productId;

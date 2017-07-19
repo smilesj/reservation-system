@@ -24,7 +24,7 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 	
 	@Override
 	public List<CommentInfo> get(Integer productId) {
-		List<CommentInfo> list = dao.selectByProductId(productId);
+		List<CommentInfo> list = dao.select(productId);
 		for(CommentInfo i : list) {
 			if(i.getTempFileId() != null) {
 				i.setCommentImg(fileDao.selectByReservationUserCommentId(i.getCommentId()));
@@ -35,6 +35,6 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 	
 	@Override
 	public Double getAvgScore(Integer productId) {
-		return dao.getAvgScore(productId);
+		return dao.selectAvgScore(productId);
 	}
 }

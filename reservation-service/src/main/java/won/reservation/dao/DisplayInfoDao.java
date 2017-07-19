@@ -15,6 +15,7 @@ import won.reservation.domain.DisplayInfo;
 
 @Repository
 public class DisplayInfoDao {
+	
 	private NamedParameterJdbcTemplate jdbc;
 	private SimpleJdbcInsert insertAction;
 	private RowMapper<DisplayInfo> rowMapper = BeanPropertyRowMapper.newInstance(DisplayInfo.class);

@@ -5,6 +5,7 @@ import java.util.List;
 import won.reservation.domain.File;
 
 public class CommentInfo {
+	
 	private int commentId;
 	private String comment;
 	private Double score;
@@ -13,9 +14,7 @@ public class CommentInfo {
 	private Integer tempFileId;
 	private List<File> commentImg;
 	
-	public CommentInfo() {
-		
-	}
+	public CommentInfo() {}
 
 	public CommentInfo(int commentId, String comment, Double score, int userId, String visitedDate, Integer tempFileId, List<File> commentImg) {
 		this.commentId = commentId;

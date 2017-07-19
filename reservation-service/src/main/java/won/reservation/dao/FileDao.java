@@ -17,6 +17,7 @@ import won.reservation.domain.File;
 
 @Repository
 public class FileDao {
+	
 	private NamedParameterJdbcTemplate jdbc;
 	private SimpleJdbcInsert insertAction;
 	private RowMapper<File> rowMapper = BeanPropertyRowMapper.newInstance(File.class);
@@ -47,7 +48,6 @@ public class FileDao {
 	}
 	
 	public String selectById(Integer fileId) {
-
 		Map<String, Integer> params = new HashMap<>();
 		params.put("fileid", fileId);
 		return jdbc.queryForObject(FileSqls.SELECT_BY_ID, params, String.class);

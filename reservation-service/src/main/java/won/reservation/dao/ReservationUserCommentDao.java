@@ -17,10 +17,10 @@ import won.reservation.dto.CommentInfo;
 
 @Repository
 public class ReservationUserCommentDao {
+	
 	private NamedParameterJdbcTemplate jdbc;
 	private SimpleJdbcInsert insertAction;
 	private RowMapper<ReservationUserComment> rowMapper = BeanPropertyRowMapper.newInstance(ReservationUserComment.class);
-	private RowMapper<CommentInfo> commentRowMapper = BeanPropertyRowMapper.newInstance(CommentInfo.class);
 	
 	public ReservationUserCommentDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
@@ -29,13 +29,14 @@ public class ReservationUserCommentDao {
 				.usingGeneratedKeyColumns("id");
 	}
 	
-	public List<CommentInfo> selectByProductId(Integer productId) {
+	public List<CommentInfo> select(Integer productId) {
+		RowMapper<CommentInfo> rowMapper = BeanPropertyRowMapper.newInstance(CommentInfo.class);
 		Map<String, Integer> params = new HashMap<>();
 		params.put("productid", productId);
-		return jdbc.query(ReservationUserCommentSqls.SELECT_BY_PRODUCT_ID, params, commentRowMapper);
+		return jdbc.query(ReservationUserCommentSqls.SELECT_BY_PRODUCT_ID, params, rowMapper);
 	}
 	
-	public Double getAvgScore(Integer productId) {
+	public Double selectAvgScore(Integer productId) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("productid", productId);
 		return jdbc.queryForObject(ReservationUserCommentSqls.SCORE_AVG, params, Double.class);

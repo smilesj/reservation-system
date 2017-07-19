@@ -13,38 +13,38 @@ import won.reservation.service.CategoryService;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-	private CategoryDao categoryDao;
+	private CategoryDao dao;
 	
 	@Autowired
-	public CategoryServiceImpl(CategoryDao categoryDao) {
-		this.categoryDao = categoryDao;
+	public CategoryServiceImpl(CategoryDao dao) {
+		this.dao = dao;
 	}
 	
 	@Override
 	public List<Category> get() {
-		return categoryDao.select();
+		return dao.select();
 	}
 	
 	@Override
 	@Transactional(readOnly = true)	
 	public Category get(int id) {
-		return categoryDao.selectById(id);
+		return dao.selectById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = false)
 	public int add(String name) {
-		return categoryDao.insert(name);
+		return dao.insert(name);
 	}
 
 	@Override
-	public int update(Category category) {
-		return categoryDao.update(category);
+	public int modify(Category category) {
+		return dao.update(category);
 	}
 
 	@Override
-	public int delete(int id) {
-		return categoryDao.delete(id);
+	public int remove(int id) {
+		return dao.delete(id);
 	}
 	
 }
