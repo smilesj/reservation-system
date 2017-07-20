@@ -21,6 +21,9 @@
                     <a href="/" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
                 </h1>
                 <a href="/myreservation" class="btn_my"><span title="내 예약">MY</span> </a>
+               <!--  
+                <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=7HYSSZyvxLo0lyAcabtI&redirect_uri=http://localhost:8080/api/users/loginCallBack&state=123" class="btn_my"><span title="내 예약">MY</span> </a>
+             -->
             </header>
         </div>
         <hr>

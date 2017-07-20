@@ -12,7 +12,7 @@ import won.reservation.service.CategoryService;
 public class MainController {
 	
 	private CategoryService categoryService;
-	
+		
 	@Autowired
 	public MainController(CategoryService categoryService) {
 		this.categoryService = categoryService;
