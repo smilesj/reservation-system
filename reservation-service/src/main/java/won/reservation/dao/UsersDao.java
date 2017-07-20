@@ -31,12 +31,7 @@ public class UsersDao {
 		Map<String, Object> params = new HashMap<>();
 		params.put("snsid", snsId);
 		params.put("snstype", snsType);
-		try {
-			 return jdbc.queryForObject(UsersSqls.SELECT_BY_SNS_ID, params, rowMapper);
-		}catch(Exception e) {
-			
-		}
-		return null;
+		return jdbc.queryForObject(UsersSqls.SELECT_BY_SNS_ID, params, rowMapper);
 	}
 	
 	public int insert(Users user) {

@@ -5,8 +5,6 @@ import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -78,7 +76,7 @@ public class UsersController {
 				apiURL += "&state=" + state;
 				
 				String accessToken = "";
-				String refreshToken = "";
+				//String refreshToken = "";
 				 
 				 RestTemplate rest = new RestTemplate();
 				 ResponseEntity<JSONObject> response = null;
@@ -86,7 +84,7 @@ public class UsersController {
 		         JSONObject obj = response.getBody();
 		       
 		         accessToken = (String)obj.get("access_token");
-		         refreshToken = (String)obj.get("refresh_token");
+		         //refreshToken = (String)obj.get("refresh_token");
 				 if(response.getStatusCodeValue() == 200) {
 					 NaverLoginUser user = getProfile(accessToken);
 					 if(user != null) {
@@ -114,20 +112,16 @@ public class UsersController {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			
 			return "redirect:/myreservation";
 		}
-		
 		return "redirect:/";
-		
 	}
 	
 	public NaverLoginUser getProfile(String accessToken) {
 		NaverLoginUser user = null;
 		String apiURL = "https://openapi.naver.com/v1/nid/me";
 		RestTemplate rest = new RestTemplate();
-		//ParameterizedTypeReference<NaverLoginUserResult> responseEntity = new ParameterizedTypeReference<NaverLoginUserResult>() {};
-		
+
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", "bearer "+accessToken);
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -139,9 +133,9 @@ public class UsersController {
 		}
 		return user;
 		
+		// 바로 NaverLoginUser정보만 가져올때
 		//ResponseEntity<NaverLoginUser> re = rest.exchange(apiURL, HttpMethod.GET, re, new ParameterizedTypeReference<NaverLoginUser>(){});
 		//NaverLoginUser resp = re.getBody().getEmail();
-		
        
 	}
 }
