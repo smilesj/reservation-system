@@ -11,7 +11,7 @@ public class Users {
 	private String snsId;
 	private String snsType;
 	private String snsProfile;
-	private String adminFlag;
+	private Integer adminFlag;
 	private Timestamp createDate;
 	private Timestamp modifyDate;
 	
@@ -20,7 +20,7 @@ public class Users {
 	}
 
 	public Users(int id, String username, String email, String tel, String nickname, String snsId, String snsType,
-			String snsProfile, String adminFlag, Timestamp createDate, Timestamp modifyDate) {
+			String snsProfile, Integer adminFlag, Timestamp createDate, Timestamp modifyDate) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
@@ -98,11 +98,11 @@ public class Users {
 		this.snsProfile = snsProfile;
 	}
 
-	public String getAdminFlag() {
+	public Integer getAdminFlag() {
 		return adminFlag;
 	}
 
-	public void setAdminFlag(String adminFlag) {
+	public void setAdminFlag(Integer adminFlag) {
 		this.adminFlag = adminFlag;
 	}
 
