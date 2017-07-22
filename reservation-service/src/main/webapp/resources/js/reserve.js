@@ -10,3 +10,8 @@ $("div.inline_control .email").keyup("change", function(){
 	console.log("email change");
 	// [a-zA-Z0-9\_]+@[a-zA-Z0-9\_]+\.[a-zA-Z0-9]{2,}
 });
+
+$(".agreement").on("click", function(){
+	event.preventDefault();
+	$(this).addClass("open");
+});
