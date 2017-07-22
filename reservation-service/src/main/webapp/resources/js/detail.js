@@ -39,9 +39,15 @@ $(function(){
 	$(".group_visual .prev_inn").on("click", pageNumMinus);
 	$(".group_visual .nxt_inn").on("click", pageNumPlus);
 	
+	
 	// 예매하기 버튼
 	$(".section_btn").on("click", function(){
-		alert($("#product_sales").val());
+		var saleStatus = $("#product_sales").val();
+		alert(saleStatus);
+		if(saleStatus == '판매가능'){
+			var productId = $(".section_btn").data("category");
+			location.href = "/reserve/"+productId;
+		}
 	});
 	
 	

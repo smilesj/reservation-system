@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 </c:if>
-                <div class="section_btn"><input type="hidden" id="product_sales" value="${product.sales }" /> <button type="button" class="bk_btn"> <i class="fn fn-nbooking-calender2"></i> <span>예매하기</span> </button> </div>
+                <div class="section_btn" data-category="${product.productId }"><input type="hidden" id="product_sales" value="${product.sales }" /> <button type="button" class="bk_btn"> <i class="fn fn-nbooking-calender2"></i> <span>예매하기</span> </button> </div>
                 <div class="section_review_list">
                     <div class="review_box">
                         <h3 class="title_h3">예매자 한줄평</h3>
