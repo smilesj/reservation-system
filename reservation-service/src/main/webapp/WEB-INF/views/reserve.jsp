@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -59,7 +60,8 @@
                 </div>
                 <div class="section_booking_ticket">
                     <div class="ticket_body">
-                        <div class="qty">
+                    	<c:forEach var="ticket" items="${ticketPrice }">
+                    	<div class="qty">
                             <div class="count_control">
                                 <!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
                                 <div class="clearfix">
@@ -68,6 +70,25 @@
                                     </a>
                                 </div>
                                 <!-- [D] 금액이 0 이상이면 individual_price에 on_color 추가 -->
+                                <div class="individual_price"><span class="total_price"><fmt:formatNumber value="${ticket.price }" pattern="#,###.##" /></span><span class="price_type">원</span></div>
+                            </div>
+                            <div class="qty_info_icon"> 
+                            	<strong class="product_amount"> <span>성인</span> </strong> 
+                            	<strong class="product_price"> <span class="price"><fmt:formatNumber value="${ticket.price }" pattern="#,###.##" /></span> <span class="price_type">원</span> </strong> 
+                            	<em class="product_dsc">
+                            	<fmt:formatNumber value="${ticket.price*(1-ticket.discountRate) }" pattern="#,###.##" />원  (<fmt:formatNumber value="${ticket.discountRate*100 }" pattern="###" />% 할인가)</em> 
+                            </div>
+                        </div>
+                    	</c:forEach>
+                        <!-- <div class="qty">
+                            <div class="count_control">
+                                [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가
+                                <div class="clearfix">
+                                    <a href="#" class="btn_plus_minus spr_book2 ico_minus3 disabled" title="빼기"> </a> <input type="tel" class="count_control_input disabled" value="0" readonly title="수량">
+                                    <a href="#" class="btn_plus_minus spr_book2 ico_plus3" title="더하기">
+                                    </a>
+                                </div>
+                                [D] 금액이 0 이상이면 individual_price에 on_color 추가
                                 <div class="individual_price"><span class="total_price">123,000</span><span class="price_type">원</span></div>
                             </div>
                             <div class="qty_info_icon"> <strong class="product_amount"> <span>성인</span> </strong> <strong class="product_price"> <span class="price">10,200</span> <span class="price_type">원</span> </strong> <em class="product_dsc">10,200원 (15% 할인가)</em> </div>
@@ -104,8 +125,8 @@
                                 <div class="individual_price on_color"><span class="total_price">123,000</span><span class="price_type">원</span></div>
                             </div>
                             <div class="qty_info_icon"> <strong class="product_amount"> <span>청소년</span> </strong> <strong class="product_price"> <span class="price">8,500</span> <span class="price_type">원</span> </strong> <em class="product_dsc">8,500원 (15% 할인가)</em> </div>
-                        </div>
-                    </div>
+                        </div>-->
+                    </div> 
                 </div>
                 <div class="section_booking_form">
                     <div class="booking_form_wrap">
