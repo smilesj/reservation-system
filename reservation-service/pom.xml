@@ -219,6 +219,7 @@
 					<port>8080</port>
 					<path>/</path>
 					<uriEncoding>utf-8</uriEncoding>
+					<contextReloadable>true</contextReloadable>	<!-- 자바파일 변경시 tomcat 자동 재실행 -->
 				</configuration>
 			</plugin>
 
