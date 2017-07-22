@@ -135,13 +135,13 @@
                             <div class="agreement_nessasary help_txt"> <span class="spr_book ico_nessasary"></span> <span>필수입력</span> </div>
                             <form class="form_horizontal">
                                 <div class="inline_form"> <label class="label" for="name"> <span class="spr_book ico_nessasary">필수</span> <span>예매자</span> </label>
-                                    <div class="inline_control"> <input type="text" name="name" id="name" class="text" value="네이버" maxlength="17"> </div>
+                                    <div class="inline_control"> <input type="text" name="name" id="name" class="text" value="${user.userName }" maxlength="17"> </div>
                                 </div>
                                 <div class="inline_form"> <label class="label" for="tel"> <span class="spr_book ico_nessasary">필수</span> <span>연락처</span> </label>
-                                    <div class="inline_control"> <input type="tel" name="tel" id="tel" class="tel" value="01012345678" placeholder="휴대폰 입력 시 예매내역 문자발송"> </div>
+                                    <div class="inline_control"> <input type="tel" name="tel" id="tel" class="tel" value="${user.tel }" placeholder="휴대폰 입력 시 예매내역 문자발송"> </div>
                                 </div>
                                 <div class="inline_form"> <label class="label" for="email">  <span>이메일</span> </label>
-                                    <div class="inline_control"> <input type="email" name="email" id="email" class="email" value="navercorp@naver.com" maxlength="50"> </div>
+                                    <div class="inline_control"> <input type="email" name="email" id="email" class="email" value="${user.email }" maxlength="50"> </div>
                                 </div>
                                 <div class="inline_form last"> <label class="label" for="message">예매내용</label>
                                     <div class="inline_control">

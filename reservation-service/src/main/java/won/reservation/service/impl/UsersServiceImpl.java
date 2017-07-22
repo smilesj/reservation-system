@@ -18,6 +18,11 @@ public class UsersServiceImpl implements UsersService {
 	}
 	
 	@Override
+	public Users get(Integer id) {
+		return dao.select(id);
+	}
+	
+	@Override
 	public Users get(String snsId, String snsType) {
 		return dao.select(snsId, snsType);
 	}
@@ -26,5 +31,6 @@ public class UsersServiceImpl implements UsersService {
 	public int add(Users user) {
 		return dao.insert(user);
 	}
+
 	
 }

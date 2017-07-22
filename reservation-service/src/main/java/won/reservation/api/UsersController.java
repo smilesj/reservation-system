@@ -92,9 +92,9 @@ public class UsersController {
 						 Users joinedUser = service.get(user.getId(), snsType);
 						 if(joinedUser == null) {
 							 Users newUser = new Users();
-							 newUser.setUsername(user.getName());
+							 newUser.setUserName(user.getName());
 							 newUser.setEmail(user.getEmail());
-							 newUser.setNickname(user.getNickname());
+							 newUser.setNickName(user.getNickname());
 							 newUser.setSnsId(user.getId());
 							 newUser.setSnsType(snsType);
 							 newUser.setSnsProfile(user.getProfileImage());
@@ -102,7 +102,9 @@ public class UsersController {
 							 newUser.setCreateDate(new Timestamp(System.currentTimeMillis()));
 							 newUser.setModifyDate(new Timestamp(System.currentTimeMillis()));
 							 int result = service.add(newUser);
-							 System.out.println("데이터넣기 > " + result);
+							 session.setAttribute("userId", result);
+						 }else {
+							 session.setAttribute("userId", joinedUser.getId());
 						 }
 						 session.setAttribute("loginStatus", "success");
 					 }

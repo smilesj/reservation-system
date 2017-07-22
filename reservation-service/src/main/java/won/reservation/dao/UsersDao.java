@@ -27,6 +27,12 @@ public class UsersDao {
 				.usingGeneratedKeyColumns("id");
 	}
 	
+	public Users select(Integer id) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("id", id);
+		return jdbc.queryForObject(UsersSqls.SELECT_BY_Id, params, rowMapper);
+	}
+	
 	public Users select(String snsId, String snsType) {
 		Map<String, Object> params = new HashMap<>();
 		params.put("snsid", snsId);
