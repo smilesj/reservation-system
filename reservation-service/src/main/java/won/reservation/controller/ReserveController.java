@@ -59,6 +59,6 @@ public class ReserveController {
 		reservationInfo.setModifyDate(new Timestamp(System.currentTimeMillis()));
 		reservationInfo.setReservationDate(new Timestamp(System.currentTimeMillis()));
 		reservationInfoService.add(reservationInfo);
-		return "hahaha";
+		return "success";
 	}
 }

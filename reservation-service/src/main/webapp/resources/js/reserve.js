@@ -1,6 +1,5 @@
 var valueInvalidFlag = true;
 $("div.inline_control .tel").keyup("change", function(){
-
 	var tel = $("div.inline_control .tel").val();
 	var pattern = /^([0-9]){9,11}$/;
 	var result = pattern.test(tel);
@@ -10,7 +9,6 @@ $("div.inline_control .tel").keyup("change", function(){
 });
 
 $("div.inline_control .email").keyup("change", function(){
-	console.log("email change");
 	var email = $("div.inline_control .email").val();
 	var pattern = /^([\w\.\-]+)\@([\w]+)\.([\w]+)(([\w\.]+)?)$/;
 	var result = pattern.test(email);
@@ -119,8 +117,7 @@ $("div.clearfix a.ico_plus3").on("click", function(){
 
 // 예약하기버튼
 $(".bk_btn_wrap").on("click", function(){
-	//if(!$(this).hasClass("disable")){
-		console.log("예약하기 버튼 클릭");
+	if(!$(this).hasClass("disable")){
 		var data = {};
 		for(var i = 0; i < countControl.length; i++){
 			if(i == 0){
@@ -135,20 +132,17 @@ $(".bk_btn_wrap").on("click", function(){
 		data.reservationName = $("div.inline_control input[name='name']").val();
 		data.reservationTel = $("div.inline_control .tel").val();
 		data.reservationEmail = $("div.inline_control .email").val();
-		console.log(data);
-		
+
 		$.ajax({
 			url : "/reserve",
 			method : "post",
 			data : data,
 			success : function(e){
-				console.log(e);
+				if(e == 'success'){
+					console.log("저장완료");
+				}
 			}
 		});
-		
-		//console.log( $(".form_horizontal:input[name='name']").val());
-		 //$("div.inline_control .tel").val();
-		 //$("div.inline_control .email").val();
-	//}
+	}
 });
 
