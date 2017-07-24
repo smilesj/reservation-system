@@ -47,13 +47,13 @@ $(function(){
 
 	})();
 
-	var product_info_module = function(categoryId, start){
+	var productInfoModule = function(categoryId, start){
 		
 		// 중복되는 내요을 함수로 뺴고 호출
 		return {
 			getList : function getProductList(){
 				var rest = "";
-				if(categoryId == 0 || categoryId == undefined)
+				if((categoryId == 0) || (categoryId == undefined))
 					rest = start;
 				else
 					rest = categoryId+"/start/"+start;
@@ -66,13 +66,12 @@ $(function(){
 				}).done(function(data){
 					$(".event_lst_txt .pink").html(data.cnt+"개"); // 카테고리별 상품 총 개수
 					
+					var dummy = $("#project-item-template").html();
+					var template = Handlebars.compile(dummy);
 					$.each(data.list, function(index, product){
-						var dummy = $("#project-item-template").html();
-						var template = Handlebars.compile(dummy);
 						var source = product;
-						
 						var item = template(source);
-						if(index%2 == 0){
+						if((index%2) == 0){
 							$(".lst_event_box:first").append(item);
 						}else{
 							$(".lst_event_box:last").append(item);
@@ -97,21 +96,21 @@ $(function(){
 					var leftSize = $(".lst_event_box:first .item").length;
 					var rightSize = $(".lst_event_box:last .item").length;
 					
+					var dummy = $("#project-item-template").html();
+					var template = Handlebars.compile(dummy);
 					$.each(data.list, function(index, product){
-						var dummy = $("#project-item-template").html();
-						var template = Handlebars.compile(dummy);
 						var source = product;
 						
 						var item = template(source);
 
 						if(leftSize > rightSize){
-							if(index%2 == 1){
+							if((index%2) == 1){
 								$(".lst_event_box:first").append(item);
 							}else{
 								$(".lst_event_box:last").append(item);
 							}
 						}else{
-							if(index%2 == 0){
+							if((index%2) == 0){
 								$(".lst_event_box:first").append(item);
 							}else{
 								$(".lst_event_box:last").append(item);
@@ -128,7 +127,7 @@ $(function(){
 	$(".prev_inn").on("click",rolling.preRolling);
 	$(".nxt_inn").on("click", rolling.nextRolling);
 	
-	var product = product_info_module.call(this, 0, start);
+	var product = productInfoModule.call(this, 0, start);
 	product.getList();
 	
 	$(".event_tab_lst .item").on("click", anchorClick);
@@ -136,8 +135,8 @@ $(function(){
 	// 더보기
 	$(".more .btn").on("click", function(){
 		start++;
-		var categoryId = $(".active").parent().attr("data-category");
-		var product = product_info_module.call(this, categoryId, start);
+		var categoryId = $(".active").parent().data("category");
+		var product = productInfoModule.call(this, categoryId, start);
 		product.getMore();
 	});
 	
@@ -146,20 +145,16 @@ $(function(){
 		$(".anchor").removeClass("active");
 		$(this).find(".anchor").addClass("active");
 		var categoryId = $(this).attr("data-category");
-		var product = product_info_module.call(this, categoryId, start);
+		var product = productInfoModule.call(this, categoryId, start);
 		product.getList();
 	}
 	
 	$(window).scroll(function() {
 	    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 	    	start++;
-	    	var categoryId = $(".active").parent().attr("data-category");
-			var product = product_info_module.call(this, categoryId, start);
+	    	var categoryId = $(".active").parent().data("category");
+			var product = productInfoModule.call(this, categoryId, start);
 			product.getMore();
 	    }
 	});
-
-//	$(".lst_event_box").on("click", function(){
-//		console.log("click");
-//	});
 });

@@ -1,4 +1,4 @@
-var popcarousel = (function(){
+var Popcarousel = (function(){
 		// private 변수, 함수 선언 	
 		var	size;
 		var	childCnt;
@@ -17,8 +17,6 @@ var popcarousel = (function(){
 		}
 		
 		function prevImg(){
-			console.log(item);
-
 			if(cnt <= 0){
 				cnt = childCnt;
 				item.animate({'left': -(cnt*size)+'px'}, 0);

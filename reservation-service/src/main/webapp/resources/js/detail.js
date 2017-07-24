@@ -29,9 +29,9 @@ $(function(){
 		$(".detail_location").removeClass("hide");
 	});
 		
-	carousel.init.bind($(".visual_img"))();
-	$(".group_visual .prev_inn").on("click", carousel.prev);
-	$(".group_visual .nxt_inn").on("click", carousel.next);
+	Carousel.init.bind($(".visual_img"))();
+	$(".group_visual .prev_inn").on("click", Carousel.prev);
+	$(".group_visual .nxt_inn").on("click", Carousel.next);
 	
 
 	var pageNum = 1;
@@ -67,10 +67,10 @@ $(function(){
 	$(".visual_img").bind("touchend", function(e){
 		touchEndX = e.changedTouches[0].pageX;
 		if(touchStartX - touchEndX < 20){
-			carousel.prev();
+			Carousel.prev();
 			pageNumMinus();
 		}else if(touchEndX - touchStartX < 20){
-			carousel.next();
+			Carousel.next();
 			pageNumPlus();
 		}
 	});
@@ -113,38 +113,33 @@ $(function(){
 				$("#photoviwer ul").append(item);
 			});
 			$(".photoul li").css('width', imgWidth);
-			popcarousel.init.bind($(".photoul"))();	// 이벤트처리순서중요!
+			Popcarousel.init.bind($(".photoul"))();	// 이벤트처리순서중요!
 		});
-		
 	});
 	
 	$("#photoviwer ._close").on("click", function(){
 		$("#photoviwer").css("display", "none");
 	});
 	
-	
 	// 레이어팝업 터치	
 	var popTouchStartX = 0;
 	var popTouchEndX = 0;
 	$(".photoul").bind("touchstart", function(e){
 		popTouchStartX = e.targetTouches[0].pageX;
-		popcarousel.prev();
+		Popcarousel.prev();
 	});
 	
-	$(".photoul").bind(".photoul").bind("touchmove", function(e){
+	$(".photoul").bind("touchmove", function(e){
 		var popTouchMoveX = e.targetTouches[0].pageX;
 		$(".photoul .item").css("left", -popTouchMoveX+"px");
 	});
 	
-	$(".photoul").bind(".photoul").bind("touchend", function(e){
+	$(".photoul").bind("touchend", function(e){
 		popTouchEndX = e.changedTouches[0].pageX;
 		if(popTouchStartX - popTouchEndX < 20){
-			popcarousel.prev();
+			Popcarousel.prev();
 		}else if(popTouchEndX - popTouchStartX < 20){
-			popcarousel.next();
+			Popcarousel.next();
 		}
 	});
-		
-
-
 });
