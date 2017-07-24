@@ -1,19 +1,38 @@
+var valueInvalidFlag = true;
 $("div.inline_control .tel").keyup("change", function(){
 
 	var tel = $("div.inline_control .tel").val();
-	var pattern = /^[0-9]+/;
+	var pattern = /^([0-9]){9,11}$/;
 	var result = pattern.test(tel);
-	console.log(result);
+	valueInvalidFlag = result;
+	$(".agreement").eq(0).find("#chk3").prop("checked", false);
+	$(".bk_btn_wrap").addClass("disable");
 });
 
 $("div.inline_control .email").keyup("change", function(){
 	console.log("email change");
-	// [a-zA-Z0-9\_]+@[a-zA-Z0-9\_]+\.[a-zA-Z0-9]{2,}
+	var email = $("div.inline_control .email").val();
+	var pattern = /^([\w\.\-]+)\@([\w]+)\.([\w]+)(([\w\.]+)?)$/;
+	var result = pattern.test(email);
+	valueInvalidFlag = result;
+	$(".agreement").eq(0).find("#chk3").prop("checked", false);
+	$(".bk_btn_wrap").addClass("disable");
 });
 
 $(".agreement").on("click", function(){
 	event.preventDefault();
-	$(this).addClass("open");
+	if($(this).index() == 0){
+		var toggle = !$(this).find("#chk3").prop("checked");
+		$(this).find("#chk3").prop("checked", toggle);
+		if(toggle && valueInvalidFlag){
+			$(".bk_btn_wrap").removeClass("disable");
+		}else{
+			$(".bk_btn_wrap").addClass("disable");
+		}
+	}else{
+		$(this).addClass("open");		
+	}
+	
 });
 
 // event emitter
@@ -32,7 +51,6 @@ class CountControl extends eg.Component {
 	plus() {
 		var temp = this.option("cnt");
 		this.option("cnt", temp+1);
-		console.log("hi plus> " + this.option("cnt"));
 	}
 	
 	tminus(){
@@ -89,7 +107,3 @@ $("div.clearfix a.ico_plus3").on("click", function(){
 		$(".qty").eq(index).find(".individual_price").addClass("on_color");
 	}
 });
-
-
-
-
