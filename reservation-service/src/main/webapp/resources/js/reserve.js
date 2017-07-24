@@ -117,3 +117,38 @@ $("div.clearfix a.ico_plus3").on("click", function(){
 
 });
 
+// 예약하기버튼
+$(".bk_btn_wrap").on("click", function(){
+	//if(!$(this).hasClass("disable")){
+		console.log("예약하기 버튼 클릭");
+		var data = {};
+		for(var i = 0; i < countControl.length; i++){
+			if(i == 0){
+				data.generalTicketCount = countControl[i].getCnt();
+			}else if(i == 1){
+				data.youthTicketCount = countControl[i].getCnt();
+			}else{
+				data.childTicketCount = countControl[i].getCnt();
+			}
+		}
+		data.productId = $(".title").data("category");
+		data.reservationName = $("div.inline_control input[name='name']").val();
+		data.reservationTel = $("div.inline_control .tel").val();
+		data.reservationEmail = $("div.inline_control .email").val();
+		console.log(data);
+		
+		$.ajax({
+			url : "/reserve",
+			method : "post",
+			data : data,
+			success : function(e){
+				console.log(e);
+			}
+		});
+		
+		//console.log( $(".form_horizontal:input[name='name']").val());
+		 //$("div.inline_control .tel").val();
+		 //$("div.inline_control .email").val();
+	//}
+});
+

@@ -28,7 +28,7 @@
             <div class="ct_wrap">
                 <div class="top_title">
                     <a href="#" class="btn_back" title="이전 화면으로 이동"> <i class="fn fn-backward1"></i> </a>
-                    <h2><span class="title">${product.productName }</span></h2>
+                    <h2><span class="title" data-category="${product.productId}">${product.productName }</span></h2>
                 </div>
                 <div class="group_visual">
                     <div class="container_visual" style="width: 414px;">
