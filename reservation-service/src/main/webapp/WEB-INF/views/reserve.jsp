@@ -189,6 +189,7 @@
         </div>
     </footer>
 </body>
+<script src="/resources/js/node_modules/@egjs/component/dist/component.js"></script>
 <script src="/resources/js/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/resources/js/reserve.js"></script>
 </html>
