@@ -89,6 +89,10 @@ $("div.clearfix a.ico_minus3").on("click", function(){
 				$(".qty").eq(index).find(".individual_price").removeClass("on_color");
 			}
 		}
+		var date = $(".inline_txt").html().substring(0, $(".inline_txt").html().indexOf("총")+2);
+		var totalCount = Number($(".inline_txt").html().substring($(".inline_txt").html().indexOf("총")+2, $(".inline_txt").html().indexOf("총")+3));
+		totalCount--;
+		$(".inline_txt").html(date+totalCount+"매");
 	}
 });
 
@@ -106,4 +110,10 @@ $("div.clearfix a.ico_plus3").on("click", function(){
 		$(".qty").eq(index).find(".total_price").html(productPrice*num);
 		$(".qty").eq(index).find(".individual_price").addClass("on_color");
 	}
+	var date = $(".inline_txt").html().substring(0, $(".inline_txt").html().indexOf("총")+2);
+	var totalCount = Number($(".inline_txt").html().substring($(".inline_txt").html().indexOf("총")+2, $(".inline_txt").html().indexOf("총")+3));
+	totalCount++;
+	$(".inline_txt").html(date+totalCount+"매");
+
 });
+

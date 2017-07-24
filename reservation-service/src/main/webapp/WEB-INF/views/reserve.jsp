@@ -54,7 +54,12 @@
                         </p>
                         <h3 class="in_tit">요금</h3>
                         <p class="dsc">
-                            성인(만 19~64세) 5,000원 / 청소년(만 13~18세) 4,000원<br> 어린이(만 4~12세) 3,000원 / 20인 이상 단체 20% 할인<br> 국가유공자, 장애인, 65세 이상 4,000원
+                        <c:forEach var="ticket" items="${ticketPrice }" varStatus="status" >
+                        	<c:if test="${ticket.priceType  == 1}">성인(만 19~64세) ${ticket.price}원 </c:if>
+                        	<c:if test="${ticket.priceType  == 2}">청소년(만 13~18세) ${ticket.price}원</c:if>
+                        	<c:if test="${ticket.priceType  == 3}">어린이(만 4~12세) ${ticket.price}원</c:if>
+                        	<c:if test="${status.index < ticketPrice.size()-1 }"><br/></c:if>
+                        </c:forEach>
                         </p>
                     </div>
                 </div>
