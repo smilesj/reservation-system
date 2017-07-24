@@ -70,13 +70,13 @@
                                     </a>
                                 </div>
                                 <!-- [D] 금액이 0 이상이면 individual_price에 on_color 추가 -->
-                                <div class="individual_price"><span class="total_price"><fmt:formatNumber value="${ticket.price }" pattern="#,###.##" /></span><span class="price_type">원</span></div>
+                                <div class="individual_price"><span class="total_price"><fmt:formatNumber value="0" pattern="#,###.##" /></span><span class="price_type">원</span></div>
                             </div>
                             <div class="qty_info_icon"> 
                             	<strong class="product_amount"> <span>성인</span> </strong> 
-                            	<strong class="product_price"> <span class="price"><fmt:formatNumber value="${ticket.price }" pattern="#,###.##" /></span> <span class="price_type">원</span> </strong> 
+                            	<strong class="product_price"> <span class="price"><fmt:formatNumber value="${ticket.price*(1-ticket.discountRate) }" pattern="#,###.##" /></span> <span class="price_type">원</span> </strong> 
                             	<em class="product_dsc">
-                            	<fmt:formatNumber value="${ticket.price*(1-ticket.discountRate) }" pattern="#,###.##" />원  (<fmt:formatNumber value="${ticket.discountRate*100 }" pattern="###" />% 할인가)</em> 
+                            	<fmt:formatNumber value="${ticket.price }" pattern="#,###.##" />원  (<fmt:formatNumber value="${ticket.discountRate*100 }" pattern="###" />% 할인가)</em> 
                             </div>
                         </div>
                     	</c:forEach>
