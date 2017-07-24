@@ -1,36 +1,22 @@
-var valueInvalidFlag = true;
-$("div.inline_control .tel").keyup("change", function(){
-	var tel = $("div.inline_control .tel").val();
-	var pattern = /^([0-9]){9,11}$/;
-	var result = pattern.test(tel);
-	valueInvalidFlag = result;
-	$(".agreement").eq(0).find("#chk3").prop("checked", false);
-	$(".bk_btn_wrap").addClass("disable");
-});
+var totalCountInvalidFlag = false;
 
-$("div.inline_control .email").keyup("change", function(){
-	var email = $("div.inline_control .email").val();
-	var pattern = /^([\w\.\-]+)\@([\w]+)\.([\w]+)(([\w\.]+)?)$/;
-	var result = pattern.test(email);
-	valueInvalidFlag = result;
-	$(".agreement").eq(0).find("#chk3").prop("checked", false);
-	$(".bk_btn_wrap").addClass("disable");
-});
+$("div.inline_control .tel").keyup("change", telValidate);
+$("div.inline_control .email").keyup("change", emailValidate);
 
 $(".agreement").on("click", function(){
 	event.preventDefault();
 	if($(this).index() == 0){
 		var toggle = !$(this).find("#chk3").prop("checked");
-		$(this).find("#chk3").prop("checked", toggle);
-		if(toggle && valueInvalidFlag){
+		$(this).find("#chk3").prop("checked", toggle);	
+		if(toggle && telValidate() && emailValidate() && totalCountInvalidFlag){
 			$(".bk_btn_wrap").removeClass("disable");
 		}else{
+			$(".agreement").eq(0).find("#chk3").prop("checked", false);
 			$(".bk_btn_wrap").addClass("disable");
 		}
 	}else{
 		$(this).addClass("open");		
 	}
-	
 });
 
 // event emitter
@@ -42,13 +28,11 @@ class CountControl extends eg.Component {
 	}
 	
 	minus() {
-		var temp = this.option("cnt");
-		this.option("cnt", temp-1);
+		this.option("cnt", this.option("cnt")-1);
 	}
 	
 	plus() {
-		var temp = this.option("cnt");
-		this.option("cnt", temp+1);
+		this.option("cnt", this.option("cnt")+1);
 	}
 	
 	tminus(){
@@ -70,15 +54,16 @@ for(var i = 0; i < $("div.clearfix").length; i++){
 	countControl[i].init();
 }
 
-$("div.clearfix a.ico_minus3").on("click", function(){
+$(".clearfix .ico_minus3").on("click", function(){
 	event.preventDefault();
-	var index =$(".qty .ico_minus3").index($(this));
+	var index = $(".qty .ico_minus3").index($(this));
 	if(countControl[index].getCnt() > 0){
 		countControl[index].tminus();
 		var num = countControl[index].getCnt();
 		$(this).siblings(".count_control_input").attr("value", num);
 		if(num <= 0){
 			$(this).addClass("disabled");
+			$(this).siblings(".count_control_input").addClass("disabled");
 		}
 		var productPrice = Number($(".qty").eq(index).find(".product_price .price").html().replace(",", ""));
 		if((productPrice != 0) &&(num >= 0)){
@@ -87,33 +72,28 @@ $("div.clearfix a.ico_minus3").on("click", function(){
 				$(".qty").eq(index).find(".individual_price").removeClass("on_color");
 			}
 		}
-		var date = $(".inline_txt").html().substring(0, $(".inline_txt").html().indexOf("총")+2);
-		var totalCount = Number($(".inline_txt").html().substring($(".inline_txt").html().indexOf("총")+2, $(".inline_txt").html().indexOf("총")+3));
-		totalCount--;
-		$(".inline_txt").html(date+totalCount+"매");
+		totalCountChange("-");
 	}
 });
 
-$("div.clearfix a.ico_plus3").on("click", function(){
+$(".clearfix .ico_plus3").on("click", function(){
 	event.preventDefault();
 	var index = $(".qty .ico_plus3").index($(this));
 	countControl[index].tplus();
 	var num = countControl[index].getCnt();
 	$(this).siblings(".count_control_input").attr("value", num);
 	if(num > 0){		
-		$(this).siblings("a.ico_minus3").removeClass("disabled");
+		$(this).siblings(".ico_minus3").removeClass("disabled");
+		$(this).siblings(".count_control_input").removeClass("disabled");
 	}
 	var productPrice = Number($(".qty").eq(index).find(".product_price .price").html().replace(",", ""));
 	if((productPrice != 0) &&(num > 0)){
 		$(".qty").eq(index).find(".total_price").html(productPrice*num);
 		$(".qty").eq(index).find(".individual_price").addClass("on_color");
 	}
-	var date = $(".inline_txt").html().substring(0, $(".inline_txt").html().indexOf("총")+2);
-	var totalCount = Number($(".inline_txt").html().substring($(".inline_txt").html().indexOf("총")+2, $(".inline_txt").html().indexOf("총")+3));
-	totalCount++;
-	$(".inline_txt").html(date+totalCount+"매");
-
+	totalCountChange("+");
 });
+
 
 // 예약하기버튼
 $(".bk_btn_wrap").on("click", function(){
@@ -146,3 +126,41 @@ $(".bk_btn_wrap").on("click", function(){
 	}
 });
 
+function telValidate(){
+	var tel = $("div.inline_control .tel").val();
+	var pattern = /^([0-9]){9,11}$/;
+	var result = pattern.test(tel);
+	if(!result){	
+		$(".agreement").eq(0).find("#chk3").prop("checked", false);
+		$(".bk_btn_wrap").addClass("disable");
+	}
+	return result;
+}
+
+function emailValidate(){
+	var email = $("div.inline_control .email").val();
+	var pattern = /^([\w\.\-]+)\@([\w]+)\.([\w]+)(([\w\.]+)?)$/;
+	var result = pattern.test(email);
+	if(!result){	
+		$(".agreement").eq(0).find("#chk3").prop("checked", false);
+		$(".bk_btn_wrap").addClass("disable");
+	}
+	return result;
+}
+
+function totalCountChange(p){
+	var totalCount = Number($(".inline_txt span").text());
+	if(p == '+')
+		totalCount++;
+	else if(p == '-')
+		totalCount--;
+	
+	$(".inline_txt span").text(totalCount);
+	if(totalCount <= 0){
+		totalCountInvalidFlag = false;
+		$(".agreement").eq(0).find("#chk3").prop("checked", false);
+		$(".bk_btn_wrap").addClass("disable");
+	}else{
+		totalCountInvalidFlag = true;
+	}
+}
